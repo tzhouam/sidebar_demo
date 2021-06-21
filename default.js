@@ -367,11 +367,11 @@ function loadDefaultWindow() {
       $("#trigger-text").show();
 
       imglist = [
-        "emoji/confused.jpeg",
-        "emoji/thinking.jpeg",
-        "emoji/goodjob.png",
-        "emoji/sleepy.jpeg",
-        "emoji/laugh.jpeg",
+        "./emoji/confused.jpeg",
+        "./emoji/thinking.jpeg",
+        "./emoji/goodjob.png",
+        "./emoji/sleepy.jpeg",
+        "./emoji/laugh.jpeg",
       ];
       const i = Math.floor(Math.random() * imglist.length);
       //   console.log(imglist[i]);
