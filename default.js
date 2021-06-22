@@ -4,9 +4,12 @@ function handleThresholdChange() {
   $("#thresholdtext").html("Threshold:" + threshold + "%");
 }
 
-// $(function () {
-//   $("#draggable").draggable();
-// });
+let radialInterval,
+  motorInterval,
+  barInterval,
+  default1 = 0,
+  default2 = 0,
+  default3 = 0;
 
 function loadDefaultWindow() {
   $("#draggable").draggable();
@@ -36,26 +39,27 @@ function loadDefaultWindow() {
       margin: [30, 0, 40, 0],
       // height: 150,
       // width: 100,
-      events: {
-        load: function () {
-          var series = this.series[0];
-          setInterval(function () {
-            data = [];
-            data.push(Math.random() * 150);
-            series.setData(data);
-            // console.log(data);
-          }, 2000);
-        },
+      // events: {
+      //   load: function () {
+      //     var series = this.series[0];
+      //     interval1 = setInterval(function () {
+      //       data = [];
+      //       data.push(Math.random() * 150);
+      //       series.setData(data);
+      //       // console.log(data);
+      //     }, 2000);
+      //   },
 
-        // reflow: false,
+      // reflow: false,
 
-        // redraw: function () {
-        //   this.setSize(150, 100);
-        //   console.log("redraw");
-        // },
-      },
+      // redraw: function () {
+      //   this.setSize(150, 100);
+      //   console.log("redraw");
+      // },
+      // },
     },
     exporting: {
+      enabled: false,
       buttons: {
         contextButton: {
           verticalAlign: "bottom",
@@ -118,6 +122,15 @@ function loadDefaultWindow() {
       },
     ],
   });
+
+  radialInterval = setInterval(function () {
+    if (defaultChart1) {
+      data = [];
+      data.push(Math.random() * 150);
+      defaultChart1.series[0].setData(data);
+      console.log("radial chart set data");
+    }
+  }, 2000);
 
   defaultChart2 = Highcharts.chart("defaultchart2", {
     colors: ["#FFD700"],
@@ -266,6 +279,7 @@ function loadDefaultWindow() {
     },
 
     exporting: {
+      enabled: false,
       buttons: {
         contextButton: {
           verticalAlign: "bottom",
@@ -393,6 +407,302 @@ function loadDefaultWindow() {
       $("#trigger-text").hide();
     }
   }, 3000);
+}
+
+function drawRadialChart(container, name) {
+  var RadialChart = Highcharts.chart(container, {
+    colors: ["#CD7F32"],
+    chart: {
+      type: "column",
+      inverted: true,
+      polar: true,
+      margin: [30, 0, 40, 0],
+      // events: {
+      //   load: function () {
+      //     var series = this.series[0];
+      //     setInterval(function () {
+      //       data = [];
+      //       data.push(Math.random() * 150);
+      //       series.setData(data);
+      //     }, 2000);
+      //   },
+      // },
+    },
+    exporting: {
+      enabled: false,
+      buttons: {
+        contextButton: {
+          verticalAlign: "bottom",
+          width: 10,
+        },
+      },
+    },
+    title: {
+      text: name,
+    },
+    tooltip: {
+      enabled: false,
+      outside: true,
+    },
+    pane: {
+      size: "100%",
+      innerSize: "50%",
+      endAngle: 360,
+    },
+    xAxis: {
+      tickInterval: 1,
+      lineWidth: 0,
+      categories: [
+        ' <span class="f16"><span id="flag" class="flag no">' +
+          "</span></span>",
+      ],
+    },
+    yAxis: {
+      visible: false,
+      crosshair: {
+        enabled: true,
+        color: "#333",
+      },
+      lineWidth: 0,
+      tickInterval: 25,
+      max: 150,
+      reversedStacks: false,
+      endOnTick: true,
+      showLastLabel: true,
+    },
+    plotOptions: {
+      column: {
+        stacking: "normal",
+        borderWidth: 0,
+        pointPadding: 0,
+        groupPadding: 0.15,
+      },
+    },
+    legend: {
+      labelFormatter: function () {
+        return Math.round((this.yData / 150) * 100) + "%";
+      },
+    },
+    series: [
+      {
+        name: "",
+        data: [100],
+      },
+    ],
+  });
+
+  radialInterval = setInterval(function () {
+    if (RadialChart) {
+      data = [];
+      data.push(Math.random() * 150);
+      RadialChart.series[0].setData(data);
+      console.log("radial chart set data");
+    }
+  }, 2000);
+}
+
+function drawMotorChart(container, name) {
+  var gaugeOptions = {
+    chart: {
+      type: "solidgauge",
+      margin: [30, 0, 0, 0],
+    },
+
+    title: {
+      text: name,
+      style: {
+        fontSize: ($(window).width - 50) / 10,
+      },
+    },
+
+    pane: {
+      center: ["50%", "50%"],
+      size: "100%",
+      startAngle: -90,
+      endAngle: 90,
+      background: {
+        backgroundColor:
+          Highcharts.defaultOptions.legend.backgroundColor || "#EEE",
+        innerRadius: "60%",
+        outerRadius: "100%",
+        shape: "arc",
+      },
+    },
+
+    exporting: {
+      enabled: false,
+      buttons: {
+        contextButton: {
+          verticalAlign: "bottom",
+          width: 10,
+        },
+      },
+    },
+
+    tooltip: {
+      enabled: false,
+    },
+
+    // the value axis
+    yAxis: {
+      stops: [
+        [0.1, "#55BF3B"], // green
+        [0.5, "#DDDF0D"], // yellow
+        [0.9, "#DF5353"], // red
+      ],
+      lineWidth: 0,
+      tickWidth: 0,
+      minorTickInterval: null,
+      tickAmount: 2,
+      // title: {},
+      labels: {
+        y: 16,
+        enabled: false,
+      },
+    },
+
+    plotOptions: {
+      solidgauge: {
+        dataLabels: {
+          y: 5,
+          borderWidth: 0,
+          useHTML: true,
+        },
+      },
+    },
+  };
+
+  var MotorChart = Highcharts.chart(
+    container,
+    Highcharts.merge(gaugeOptions, {
+      yAxis: {
+        min: 0,
+        max: 200,
+      },
+
+      credits: {
+        enabled: false,
+      },
+
+      series: [
+        {
+          data: [80],
+          dataLabels: {
+            formatter: function () {
+              // console.log(this.y);
+              var size = 20;
+              return (
+                '<div style="text-align:center">' +
+                '<span style="font-size:{size}">' +
+                Math.round((this.y / 200) * 100) +
+                "</span>" +
+                '<span style="font-size:12px;opacity:0.4">%</span>' +
+                "</div>"
+              );
+            },
+          },
+        },
+      ],
+    })
+  );
+
+  motorInterval = setInterval(function () {
+    var point, newVal, inc;
+
+    if (MotorChart) {
+      point = MotorChart.series[0].points[0];
+      inc = Math.round((Math.random() - 0.5) * 100);
+      newVal = point.y + inc;
+
+      if (newVal < 0 || newVal > 200) {
+        newVal = point.y - inc;
+      }
+
+      point.update(newVal);
+    }
+  }, 2000);
+}
+
+function drawBarChart(container, name) {
+  var BarChart = Highcharts.chart(container, {
+    chart: {
+      type: "bar",
+      margin: [20, 0, 40, 0],
+      height: 120,
+    },
+    exporting: {
+      enabled: false,
+    },
+    title: {
+      text: name,
+    },
+    tooltip: {
+      enabled: false,
+    },
+    xAxis: {
+      tickInterval: 1,
+      lineWidth: 0,
+    },
+    yAxis: {
+      crosshair: {
+        enabled: true,
+        color: "#333",
+      },
+      lineWidth: 0,
+      tickInterval: 25,
+      max: 150,
+      reversedStacks: false,
+      labels: {
+        enabled: false,
+      },
+      title: undefined,
+    },
+    plotOptions: {
+      column: {
+        stacking: "normal",
+        borderWidth: 0,
+        pointPadding: 0,
+        groupPadding: 0.15,
+      },
+    },
+    legend: {
+      labelFormatter: function () {
+        return Math.round((this.yData / 150) * 100) + "%";
+      },
+    },
+    series: [
+      {
+        name: "",
+        data: [100],
+      },
+    ],
+  });
+
+  barInterval = setInterval(function () {
+    if (BarChart) {
+      data = [];
+      data.push(Math.random() * 150);
+      BarChart.series[0].setData(data);
+      console.log("bar chart set data");
+    }
+  }, 2000);
+}
+
+function handleDefaultChart1() {
+  console.log("handle default chart 1");
+  if (barInterval) clearInterval(barInterval);
+  if (radialInterval) clearInterval(radialInterval);
+  if (motorInterval) clearInterval(motorInterval);
+
+  if (default1 == 0) {
+    drawMotorChart("defaultchart1", "Gaze");
+  } else if (default1 == 1) {
+    drawRadialChart("defaultchart1", "Gaze");
+  } else {
+    drawBarChart("defaultchart1", "Gaze");
+    // $("#defaultchart1").css("height", 200);
+  }
+  default1 = (default1 + 1) % 3;
 }
 
 function handleDefault1() {
