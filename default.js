@@ -4,7 +4,18 @@ function handleThresholdChange() {
   $("#thresholdtext").html("Threshold:" + threshold + "%");
 }
 
+// $(function () {
+//   $("#draggable").draggable();
+// });
+
 function loadDefaultWindow() {
+  GridStack.init();
+  $("#draggable").draggable();
+  $("#sortable").sortable({
+    // placeholder: "ui-state-highlight",
+  });
+  $("#sortable").disableSelection();
+
   // original code
   const width = $(window).width - 50;
   $("#defaultchart2").css("width", width);

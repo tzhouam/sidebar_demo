@@ -10,6 +10,9 @@
     <script src="default.js"></script>
 
     <script src="jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -34,50 +37,62 @@
         <button type=" button" class="btn btn-primary" onclick="ToFullView()">full view</button>
 
 
-        <!-- trigger -->
-        <div class="form-check form-switch mt-2">
-            <input class="form-check-input" type="checkbox" id="defaultcheckt" checked onchange="handleDefaultT()">
-            <label class="form-check-label" for="defaultcheckt">trigger</label>
-        </div>
-        <div class="card" id="defaultTrigger"
-            style="width: 18rem; height:9rem; margin:5px 0px 5px 0px; padding: 5px; align-items: center;">
+        <ul id="sortable">
+            <li>
+                <!-- trigger -->
+                <div class="form-check form-switch mt-2">
+                    <input class="form-check-input" type="checkbox" id="defaultcheckt" checked
+                        onchange="handleDefaultT()">
+                    <label class="form-check-label" for="defaultcheckt">trigger</label>
+                </div>
+                <div class="card" id="defaultTrigger"
+                    style="width: 18rem; height:9rem; margin:5px 0px 5px 0px; padding: 5px; align-items: center;">
 
-            <label id="thresholdtext" for="threshold" class="form-label">Threshold:50%</label>
-            <input type="range" class="form-range" min="0" max="100" value="50" id="threshold" style="width:5rem"
-                onchange="handleThresholdChange()">
-            <br />
+                    <label id="thresholdtext" for="threshold" class="form-label">Threshold:50%</label>
+                    <input type="range" class="form-range" min="0" max="100" value="50" id="threshold"
+                        style="width:5rem" onchange="handleThresholdChange()">
+                    <br />
 
-            <img id="trigger-img" src="./emoji/confused.jpeg" style="width: 50px; height:50px; display:none">
-            <p id="trigger-text" class="trigger-text"></p>
-        </div>
+                    <img id="trigger-img" src="./emoji/confused.jpeg" style="width: 50px; height:50px; display:none">
+                    <p id="trigger-text" class="trigger-text"></p>
+                </div>
+            </li>
 
-        <!-- default 1-->
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="defaultcheck1" checked onchange="handleDefault1()">
-            <label class="form-check-label" for="defaultcheck1">gaze</label>
-        </div>
-        <div class="card" id="defaultchart1"
-            style="width: 18rem; margin:5px 0px 5px 0px; padding: 5px; cursor: pointer;" onclick="ToFullView()">
-        </div>
+            <li>
+                <!-- default 1-->
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultcheck1" checked
+                        onchange="handleDefault1()">
+                    <label class="form-check-label" for="defaultcheck1">gaze</label>
+                </div>
+                <div class="card" id="defaultchart1" style="width: 18rem; margin:5px 0px 5px 0px; padding: 5px;">
+                </div>
+            </li>
 
-        <!-- default 2-->
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="defaultcheck2" checked onchange="handleDefault2()">
-            <label class="form-check-label" for="defaultcheck2">confused</label>
-        </div>
-        <div class="card" id="defaultchart2"
-            style="width: 18rem; margin:5px 0px 5px 0px; padding: 5px; cursor: pointer;" onclick="ToFullView()">
-        </div>
+            <li>
+                <!-- default 2-->
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultcheck2" checked
+                        onchange="handleDefault2()">
+                    <label class="form-check-label" for="defaultcheck2">confused</label>
+                </div>
 
-        <!-- default 3-->
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="defaultcheck3" checked onchange="handleDefault3()">
-            <label class="form-check-label" for="defaultcheck3">concentration</label>
-        </div>
-        <div class="card" id="defaultchart3"
-            style="width: 18rem; margin: 5px 5px 0px 0px; padding: 5px; cursor: pointer;" onclick="ToFullView()">
-        </div>
+                <div class="card" id="defaultchart2" style="width: 18rem; margin:5px 0px 5px 0px; padding: 5px; ">
 
+                </div>
+            </li>
+
+            <li>
+                <!-- default 3-->
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultcheck3" checked
+                        onchange="handleDefault3()">
+                    <label class="form-check-label" for="defaultcheck3">concentration</label>
+                </div>
+                <div class="card" id="defaultchart3" style="width: 18rem; margin: 5px 5px 0px 0px; padding: 5px; ">
+                </div>
+            </li>
+        </ul>
 
     </div>
 

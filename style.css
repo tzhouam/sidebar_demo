@@ -12,3 +12,22 @@ p.trigger-text {
 .form-label {
   font-size: small;
 }
+
+#draggable {
+  width: 150px;
+  height: 150px;
+  padding: 0.5em;
+  border: 1rem;
+  border-color: black;
+}
+
+#sortable {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ui-state-highlight {
+  height: 1.5em;
+  line-height: 1.2em;
+}

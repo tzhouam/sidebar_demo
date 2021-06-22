@@ -23,6 +23,9 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+    <link href="node_modules/gridstack/dist/gridstack.min.css" rel="stylesheet" />
+    <script src="node_modules/gridstack/dist/gridstack-h5.js"></script>
 </head>
 
 <body onresize="handleWindowResize()" onload="loadFullWindow()">
@@ -31,21 +34,36 @@
 
         <button type="button" class="btn btn-primary m-2" onclick="ToDefaultView()">default view</button>
 
-        <!-- full 1-->
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="fullcheck1" checked onchange="handleFull1()">
-            <label class="form-check-label" for="fullcheck1">1</label>
+        <div class="grid-stack">
+            <div class="grid-stack-item">
+                <div class="grid-stack-item-content">
+                    <!-- full 1-->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="fullcheck1" checked
+                            onchange="handleFull1()">
+                        <label class="form-check-label" for="fullcheck1">1</label>
+                    </div>
+                    <div class="card" id="fullchart1" style="width: 25rem; margin:5px 0px 5px 0px; padding: 15px;">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-stack-item" gs-w="2">
+                <div class="grid-stack-item-content">
+                    <!-- full 2-->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="fullcheck2" checked
+                            onchange="handleFull2()">
+                        <label class="form-check-label" for="fullcheck2">2</label>
+                    </div>
+                    <div class="card" id="fullchart2" style="width: 25rem; margin:5px 0px 5px 0px; padding: 15px;">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card" id="fullchart1" style="width: 25rem; margin:5px 0px 5px 0px; padding: 15px;">
-        </div>
+        <br />
 
-        <!-- full 2-->
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="fullcheck2" checked onchange="handleFull2()">
-            <label class="form-check-label" for="fullcheck2">2</label>
-        </div>
-        <div class="card" id="fullchart2" style="width: 25rem; margin:5px 0px 5px 0px; padding: 15px;">
-        </div>
+
+
 
         <!-- full 3-->
         <div class="form-check form-switch">

@@ -1,4 +1,6 @@
 function loadFullWindow() {
+  GridStack.init();
+
   const width = $(window).width - 50;
   $("#full2").css("width", width);
   //   $("#full2").css("height", width + 50);
