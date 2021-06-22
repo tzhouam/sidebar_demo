@@ -9,7 +9,6 @@ function handleThresholdChange() {
 // });
 
 function loadDefaultWindow() {
-  GridStack.init();
   $("#draggable").draggable();
   $("#sortable").sortable({
     // placeholder: "ui-state-highlight",
