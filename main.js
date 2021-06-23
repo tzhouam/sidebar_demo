@@ -62,9 +62,25 @@ function handleWindowResize() {
   // $("#fullchart3").css("width", width);
 }
 
+function loadWindow() {
+  var cookieList = document.cookie.split(";");
+  var gazeChartType,
+    name = "gazecharttype";
+  cookieList.forEach((val) => {
+    if (val.indexOf(name) === 0) gazeChartType = val.substring(name.length + 1);
+  });
+  $("input[name='gazeradio'][value=" + gazeChartType + "]").prop(
+    "checked",
+    true
+  );
+}
+
 var gazeChartType = "Radial";
 
 function handleRadioChange() {
   gazeChartType = $("input[name='gazeradio']:checked").val();
   console.log("handleRadioChange", gazeChartType);
+  document.cookie = "gazecharttype=" + gazeChartType;
+  // document.cookie = "gazecharttype=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+  console.log(document.cookie);
 }

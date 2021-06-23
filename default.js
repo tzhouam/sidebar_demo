@@ -12,7 +12,16 @@ var radialInterval,
   default3 = 0;
 
 function loadDefaultWindow() {
-  $("#draggable").draggable();
+  console.log(document.cookie);
+  var cookieList = document.cookie.split(";");
+  var gazeChartType,
+    name = "gazecharttype";
+  cookieList.forEach((val) => {
+    if (val.indexOf(name) === 0) gazeChartType = val.substring(name.length + 1);
+  });
+  console.log(gazeChartType);
+
+  // $("#draggable").draggable();
   $("#sortable").sortable({
     // placeholder: "ui-state-highlight",
   });
@@ -131,6 +140,18 @@ function loadDefaultWindow() {
       console.log("radial chart set data");
     }
   }, 2000);
+
+  if (barInterval) clearInterval(barInterval);
+  if (radialInterval) clearInterval(radialInterval);
+  if (motorInterval) clearInterval(motorInterval);
+
+  if (gazeChartType == "Motor") {
+    drawMotorChart("defaultchart1", "Gaze");
+  } else if (gazeChartType == "Radial") {
+    drawRadialChart("defaultchart1", "Gaze");
+  } else {
+    drawBarChart("defaultchart1", "Gaze");
+  }
 
   defaultChart2 = Highcharts.chart("defaultchart2", {
     colors: ["#FFD700"],
@@ -696,10 +717,13 @@ function handleDefaultChart1() {
 
   if (default1 == 0) {
     drawMotorChart("defaultchart1", "Gaze");
+    document.cookie = "gazecharttype=Motor";
   } else if (default1 == 1) {
     drawRadialChart("defaultchart1", "Gaze");
+    document.cookie = "gazecharttype=Radial";
   } else {
     drawBarChart("defaultchart1", "Gaze");
+    document.cookie = "gazecharttype=Bar";
     // $("#defaultchart1").css("height", 200);
   }
   default1 = (default1 + 1) % 3;
