@@ -36,6 +36,14 @@ function ToFullView() {
   fullWindow.moveTo(screen.width, 0);
 }
 
+function ToDashboard() {
+  console.log("to dashboard...");
+  window.close();
+  dashboard = window.open("index.html", "", "width=100,height=100");
+  dashboard.resizeTo(screen.width / 1.5, screen.height / 1.5);
+  dashboard.moveTo(0, 0);
+}
+
 function handleWindowResize() {
   console.log(window.innerWidth);
   console.log("charts:", Highcharts.charts);
@@ -52,4 +60,11 @@ function handleWindowResize() {
   // $("#fullchart1").css("width", width);
   // $("#fullchart2").css("width", width);
   // $("#fullchart3").css("width", width);
+}
+
+var gazeChartType = "Radial";
+
+function handleRadioChange() {
+  gazeChartType = $("input[name='gazeradio']:checked").val();
+  console.log("handleRadioChange", gazeChartType);
 }
