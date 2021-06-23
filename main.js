@@ -31,8 +31,8 @@ function ToFullView() {
 
   window.close();
   fullWindow = window.open("full.html", "", "width=100,height=100");
-  console.log((1 / 4) * screen.width);
-  fullWindow.resizeTo((1 / 4) * screen.width, screen.height);
+  console.log(screen.width);
+  fullWindow.resizeTo(screen.width, screen.height);
   fullWindow.moveTo(screen.width, 0);
 }
 
@@ -49,7 +49,7 @@ function handleWindowResize() {
   $("#defaultTrigger").css("width", width);
   $("#threshold").css("width", width - 50);
 
-  $("#fullchart1").css("width", width);
-  $("#fullchart2").css("width", width);
-  $("#fullchart3").css("width", width);
+  // $("#fullchart1").css("width", width);
+  // $("#fullchart2").css("width", width);
+  // $("#fullchart3").css("width", width);
 }

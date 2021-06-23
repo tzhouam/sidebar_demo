@@ -1,18 +1,40 @@
 function loadFullWindow() {
-  GridStack.init();
+  let grid = GridStack.init();
+
+  grid.on("resize", function (e, items) {
+    console.log("resizing", e);
+    // fullChart1.reflow();
+    // fullChart2.reflow();
+    // fullChart3.reflow();
+    fullChart1.setSize(
+      $("#grid-stack-item-1").width() - 100,
+      $("#grid-stack-item-1").height() - 100
+    );
+    fullChart2.setSize(
+      $("#grid-stack-item-2").width() - 100,
+      $("#grid-stack-item-2").height() - 100
+    );
+    fullChart3.setSize(
+      $("#grid-stack-item-3").width() - 100,
+      $("#grid-stack-item-3").height() - 100
+    );
+    console.log($("#grid-stack-item-1").width());
+  });
 
   const width = $(window).width - 50;
-  $("#full2").css("width", width);
+  console.log($("#fulldiv1").width());
+  // $("#full2").css("width", width);
   //   $("#full2").css("height", width + 50);
-  $("#full3").css("width", width);
+  // $("#full3").css("width", width);
   //   $("#full3").css("height", width + 50);
-  $("#full1").css("width", width);
+  // $("#full1").css("width", width);
   //   $("#full1").css("height", width + 50);
 
   fullChart1 = new Highcharts.Chart({
     chart: {
       renderTo: "fullchart1",
       type: "column",
+      // reflow: true,
       events: {
         load: function () {
           // set up the updating of the chart each second

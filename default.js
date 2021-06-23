@@ -4,7 +4,7 @@ function handleThresholdChange() {
   $("#thresholdtext").html("Threshold:" + threshold + "%");
 }
 
-let radialInterval,
+var radialInterval,
   motorInterval,
   barInterval,
   default1 = 0,

@@ -35,19 +35,20 @@
         <button type="button" class="btn btn-primary m-2" onclick="ToDefaultView()">default view</button>
 
         <div class="grid-stack">
-            <div class="grid-stack-item">
-                <div class="grid-stack-item-content">
+            <div class="grid-stack-item" id="grid-stack-item-1" gs-w="5" gs-h="5">
+                <div class="grid-stack-item-content" id="fulldiv1">
                     <!-- full 1-->
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="fullcheck1" checked
                             onchange="handleFull1()">
                         <label class="form-check-label" for="fullcheck1">1</label>
                     </div>
-                    <div class="card" id="fullchart1" style="width: 25rem; margin:5px 0px 5px 0px; padding: 15px;">
+                    <div class="card" id="fullchart1" style="margin:5px 0px 5px 0px; padding: 15px;">
                     </div>
                 </div>
             </div>
-            <div class="grid-stack-item" gs-w="2">
+
+            <div class="grid-stack-item" id="grid-stack-item-2" gs-w="5" gs-h="5">
                 <div class="grid-stack-item-content">
                     <!-- full 2-->
                     <div class="form-check form-switch">
@@ -55,7 +56,20 @@
                             onchange="handleFull2()">
                         <label class="form-check-label" for="fullcheck2">2</label>
                     </div>
-                    <div class="card" id="fullchart2" style="width: 25rem; margin:5px 0px 5px 0px; padding: 15px;">
+                    <div class="card" id="fullchart2" style="margin:5px 0px 5px 0px; padding: 15px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-stack-item" id="grid-stack-item-3" gs-w="5" gs-h="5">
+                <div class="grid-stack-item-content">
+                    <!-- full 3-->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="fullcheck3" checked
+                            onchange="handleFull3()">
+                        <label class="form-check-label" for="fullcheck3">3</label>
+                    </div>
+                    <div class="card" id="fullchart3" style=" margin:5px 0px 5px 0px; padding: 15px;">
                     </div>
                 </div>
             </div>
@@ -65,13 +79,7 @@
 
 
 
-        <!-- full 3-->
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="fullcheck3" checked onchange="handleFull3()">
-            <label class="form-check-label" for="fullcheck3">3</label>
-        </div>
-        <div class="card" id="fullchart3" style="width: 25rem; margin:5px 0px 5px 0px; padding: 15px;">
-        </div>
+
 
 
     </div>
