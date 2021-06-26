@@ -1,7 +1,7 @@
 function handleThresholdChange() {
   //   console.log($("#threshold")[0].value);
   const threshold = $("#threshold")[0].value;
-  $("#thresholdtext").html("Threshold:" + threshold + "%");
+  $("#thresholdtext").html("> " + threshold);
 }
 
 var radialInterval,
@@ -36,7 +36,7 @@ function loadDefaultWindow() {
   $("#defaultchart1").css("width", width);
   $("#defaultchart1").css("height", width + 50);
   $("#defaultTrigger").css("width", width);
-  $("#defaultTrigger").css("height", width + 50);
+  // $("#defaultTrigger").css("height", width + 50);
   //   console.log(width);
 
   defaultChart1 = Highcharts.chart("defaultchart1", {
@@ -408,8 +408,11 @@ function loadDefaultWindow() {
     const value = Math.round(Math.random() * 100);
     const threshold = $("#threshold")[0].value;
     if (value > threshold) {
-      $("#trigger-img").show();
-      $("#trigger-text").show();
+      // $("#trigger-img").show();
+      // $("#trigger-text").show();
+
+      // change the height of the card
+      $("#defaultTrigger").css("height", "8rem");
 
       imglist = [
         "./emoji/confused.jpeg",
@@ -421,11 +424,49 @@ function loadDefaultWindow() {
       const i = Math.floor(Math.random() * imglist.length);
       //   console.log(imglist[i]);
 
-      $("#trigger-img").attr("src", imglist[i]);
-      $("#trigger-text").html(value + "%");
+      // $("#trigger-img").attr("src", imglist[i]);
+      // $("#trigger-text").html(value + "%");
+
+      // svg
+      var svg = d3.select("svg#trigger-svg");
+      svg.selectAll("image").remove();
+      svg.selectAll("circle").remove();
+      svg.selectAll("text").remove();
+
+      var img = svg
+        .append("image")
+        .attr("xlink:href", imglist[i])
+        .attr("width", 60)
+        .attr("height", 60)
+        .attr("x", 0)
+        .attr("y", 0);
+
+      var hint = svg
+        .append("circle")
+        .attr("cx", 50)
+        .attr("cy", 10)
+        .attr("r", 10)
+        .attr("fill", "red");
+
+      var text = svg
+        .append("text")
+        .attr("x", 50)
+        .attr("y", 15)
+        .attr("fill", "white")
+        .attr("font-size", 15)
+        .text(value)
+        .attr("text-anchor", "middle");
     } else {
-      $("#trigger-img").hide();
-      $("#trigger-text").hide();
+      // change the height of the card
+      $("#defaultTrigger").css("height", "3rem");
+
+      var svg = d3.select("svg#trigger-svg");
+      svg.selectAll("image").remove();
+      svg.selectAll("circle").remove();
+      svg.selectAll("text").remove();
+
+      // $("#trigger-img").hide();
+      // $("#trigger-text").hide();
     }
   }, 3000);
 }

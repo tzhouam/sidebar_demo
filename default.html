@@ -57,15 +57,17 @@
                     <label class="form-check-label" for="defaultcheckt">trigger</label>
                 </div>
                 <div class="card" id="defaultTrigger"
-                    style="width: 18rem; height:9rem; margin:5px 0px 5px 0px; padding: 5px; align-items: center;">
+                    style="width: 18rem; height:3rem; margin:5px 0px 5px 0px; padding: 5px; align-items: center;">
 
-                    <label id="thresholdtext" for="threshold" class="form-label">Threshold:50%</label>
+                    <!-- <img id="trigger-img" src="./emoji/confused.jpeg" style="width: 50px; height:50px; display:none">
+                    <p id="trigger-text" class="trigger-text"></p> -->
+
+                    <svg id="trigger-svg" style="width: 60px; height:60px;"></svg>
+
+                    <label id="thresholdtext" for="threshold" class="form-label">> 50</label>
                     <input type="range" class="form-range" min="0" max="100" value="50" id="threshold"
                         style="width:5rem" onchange="handleThresholdChange()">
-                    <br />
 
-                    <img id="trigger-img" src="./emoji/confused.jpeg" style="width: 50px; height:50px; display:none">
-                    <p id="trigger-text" class="trigger-text"></p>
                 </div>
             </li>
 
