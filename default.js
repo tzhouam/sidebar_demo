@@ -32,9 +32,9 @@ function loadDefaultWindow() {
   $("#defaultchart2").css("width", width);
   $("#defaultchart2").css("height", width + 50);
   $("#defaultchart3").css("width", width);
-  $("#defaultchart3").css("height", width + 50);
+  $("#defaultchart3").css("height", 120);
   $("#defaultchart1").css("width", width);
-  $("#defaultchart1").css("height", width + 50);
+  // $("#defaultchart1").css("height", width + 50 - 100);
   $("#defaultTrigger").css("width", width);
   // $("#defaultTrigger").css("height", width + 50);
   //   console.log(width);
@@ -147,10 +147,13 @@ function loadDefaultWindow() {
 
   if (gazeChartType == "Motor") {
     drawMotorChart("defaultchart1", "Gaze");
+    $("#defaultchart1").css("height", 120);
   } else if (gazeChartType == "Radial") {
     drawRadialChart("defaultchart1", "Gaze");
+    $("#defaultchart1").css("height", 160);
   } else {
     drawBarChart("defaultchart1", "Gaze");
+    $("#defaultchart1").css("height", 90);
   }
 
   defaultChart2 = Highcharts.chart("defaultchart2", {
@@ -270,6 +273,7 @@ function loadDefaultWindow() {
     chart: {
       type: "solidgauge",
       margin: [30, 0, 0, 0],
+      height: 118,
       //   events: {
       // redraw() {
       //   console.log("redraw:", this.title.alignOptions.text);
@@ -479,6 +483,7 @@ function drawRadialChart(container, name) {
       inverted: true,
       polar: true,
       margin: [30, 0, 40, 0],
+      height: 140,
       // events: {
       //   load: function () {
       //     var series = this.series[0];
@@ -568,6 +573,7 @@ function drawMotorChart(container, name) {
     chart: {
       type: "solidgauge",
       margin: [30, 0, 0, 0],
+      height: 118,
     },
 
     title: {
@@ -690,7 +696,7 @@ function drawBarChart(container, name) {
     chart: {
       type: "bar",
       margin: [20, 0, 40, 0],
-      height: 120,
+      height: 100,
     },
     exporting: {
       enabled: false,
@@ -759,13 +765,15 @@ function handleDefaultChart1() {
   if (default1 == 0) {
     drawMotorChart("defaultchart1", "Gaze");
     document.cookie = "gazecharttype=Motor";
+    $("#defaultchart1").css("height", 120);
   } else if (default1 == 1) {
     drawRadialChart("defaultchart1", "Gaze");
     document.cookie = "gazecharttype=Radial";
+    $("#defaultchart1").css("height", 160);
   } else {
     drawBarChart("defaultchart1", "Gaze");
     document.cookie = "gazecharttype=Bar";
-    // $("#defaultchart1").css("height", 200);
+    $("#defaultchart1").css("height", 90);
   }
   default1 = (default1 + 1) % 3;
 }

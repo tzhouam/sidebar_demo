@@ -51,9 +51,9 @@ function handleWindowResize() {
   $("#defaultchart2").css("width", width);
   $("#defaultchart2").css("height", width + 50);
   $("#defaultchart3").css("width", width);
-  $("#defaultchart3").css("height", width + 50);
+  // $("#defaultchart3").css("height", width + 50);
   $("#defaultchart1").css("width", width);
-  $("#defaultchart1").css("height", width + 50);
+  // $("#defaultchart1").css("height", 100);
   $("#defaultTrigger").css("width", width);
   $("#threshold").css("width", width - 50);
 
