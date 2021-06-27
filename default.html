@@ -72,7 +72,35 @@
             </li>
 
             <li>
-                <!-- default 1-->
+                <!-- default 3 concentration-->
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultcheck3" checked
+                        onchange="handleDefault3()">
+                    <label class="form-check-label" for="defaultcheck3">concentration</label>
+                </div>
+                <div class="card" id="defaultchart3"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; padding: 5px; cursor:pointer"
+                    onclick="handleDefaultChart3()">
+                </div>
+            </li>
+
+            <li>
+                <!-- default 2 confused-->
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="defaultcheck2" checked
+                        onchange="handleDefault2()">
+                    <label class="form-check-label" for="defaultcheck2">confused</label>
+                </div>
+
+                <div class="card" id="defaultchart2"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; padding: 5px; cursor:pointer"
+                    onclick="handleDefaultChart2()">
+
+                </div>
+            </li>
+
+            <li>
+                <!-- default 1 gaze-->
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="defaultcheck1" checked
                         onchange="handleDefault1()">
@@ -85,26 +113,15 @@
             </li>
 
             <li>
-                <!-- default 2-->
+                <!-- default 4 emotional-->
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="defaultcheck2" checked
-                        onchange="handleDefault2()">
-                    <label class="form-check-label" for="defaultcheck2">confused</label>
+                    <input class="form-check-input" type="checkbox" id="defaultcheck4" checked
+                        onchange="handleDefault4()">
+                    <label class="form-check-label" for="defaultcheck4">emotion</label>
                 </div>
-
-                <div class="card" id="defaultchart2" style="width: 18rem; margin:5px 0px 5px 0px; padding: 5px; ">
-
-                </div>
-            </li>
-
-            <li>
-                <!-- default 3-->
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="defaultcheck3" checked
-                        onchange="handleDefault3()">
-                    <label class="form-check-label" for="defaultcheck3">concentration</label>
-                </div>
-                <div class="card" id="defaultchart3" style="width: 18rem; margin: 5px 5px 0px 0px; padding: 5px; ">
+                <div class="card" id="defaultchart4"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; padding: 5px; cursor:pointer"
+                    onclick="handleDefaultChart4()">
                 </div>
             </li>
         </ul>

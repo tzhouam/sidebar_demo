@@ -46,11 +46,12 @@ function ToDashboard() {
 
 function handleWindowResize() {
   console.log(window.innerWidth);
-  console.log("charts:", Highcharts.charts);
+  // console.log("charts:", Highcharts.charts);
   var width = window.innerWidth - 50;
   $("#defaultchart2").css("width", width);
-  $("#defaultchart2").css("height", width + 50);
+  // $("#defaultchart2").css("height", width + 50);
   $("#defaultchart3").css("width", width);
+  $("#defaultchart4").css("width", width);
   // $("#defaultchart3").css("height", width + 50);
   $("#defaultchart1").css("width", width);
   // $("#defaultchart1").css("height", 100);
@@ -63,24 +64,69 @@ function handleWindowResize() {
 }
 
 function loadWindow() {
-  var cookieList = document.cookie.split(";");
+  // update chart type status
+  var cookieList = document.cookie.split("; ");
+  console.log("on load window cookie", cookieList);
+
   var gazeChartType,
-    name = "gazecharttype";
+    gazeChartName = "gazecharttype";
   cookieList.forEach((val) => {
-    if (val.indexOf(name) === 0) gazeChartType = val.substring(name.length + 1);
+    if (val.indexOf(gazeChartName) === 0)
+      gazeChartType = val.substring(gazeChartName.length + 1);
   });
   $("input[name='gazeradio'][value=" + gazeChartType + "]").prop(
     "checked",
     true
   );
+
+  var concenChartType,
+    concenChartName = "concencharttype";
+  cookieList.forEach((val) => {
+    if (val.indexOf(concenChartName) === 0)
+      concenChartType = val.substring(concenChartName.length + 1);
+  });
+  $("input[name='concenradio'][value=" + concenChartType + "]").prop(
+    "checked",
+    true
+  );
+
+  var confusedChartType,
+    confusedChartName = "confusedcharttype";
+  cookieList.forEach((val) => {
+    if (val.indexOf(confusedChartName) === 0)
+      confusedChartType = val.substring(confusedChartName.length + 1);
+  });
+  $("input[name='confusedradio'][value=" + confusedChartType + "]").prop(
+    "checked",
+    true
+  );
+
+  var emoChartType,
+    emoChartName = "emocharttype";
+  cookieList.forEach((val) => {
+    if (val.indexOf(emoChartName) === 0)
+      emoChartType = val.substring(emoChartName.length + 1);
+  });
+  $("input[name='emoradio'][value=" + emoChartType + "]").prop("checked", true);
 }
 
 var gazeChartType = "Radial";
 
 function handleRadioChange() {
   gazeChartType = $("input[name='gazeradio']:checked").val();
-  console.log("handleRadioChange", gazeChartType);
+  console.log("gazeradio", $("input[name='gazeradio']:checked"));
   document.cookie = "gazecharttype=" + gazeChartType;
   // document.cookie = "gazecharttype=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+  confusedChartType = $("input[name='confusedradio']:checked").val();
+  console.log("confusedradio:", $("input[name='confusedradio']:checked"));
+  document.cookie = "confusedcharttype=" + confusedChartType;
+
+  concenChartType = $("input[name='concenradio']:checked").val();
+  document.cookie = "concencharttype=" + concenChartType;
+
+  emoChartType = $("input[name='emoradio']:checked").val();
+  document.cookie = "emocharttype=" + emoChartType;
+
   console.log(document.cookie);
 }
