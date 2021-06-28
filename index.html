@@ -17,6 +17,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ztc_added.css">
 </head>
 
 <body onresize="handleWindowResize()" onload="loadWindow()">
@@ -26,6 +29,27 @@
         <button type="button" class="btn btn-primary" onclick="ToDefaultView()">default view</button>
         <button type="button" class="btn btn-primary" onclick="ToFullView()">full view</button>
         <!-- </div> -->
+
+        <!-- dropdown menu for full size -->
+        <div class="dropdown" style="width: 150px">
+            <span class="dropdown-title"><b>Full size width&#8744</b></span>
+            <div class="dropdown-content" id="full_size_selection" style="width: 150px">
+                <div class="dropdown-option">
+                    <input type="radio" name="full_ratio" value="0.25" onclick=" Handle_select_full_view_size()"><img
+                        src="full_size_img/0.25_icon.png" class="full_window_size">(25%)<br>
+                </div>
+                <div class="dropdown-option">
+                    <input type="radio" name="full_ratio" value="0.5" onclick="Handle_select_full_view_size()"><img
+                        src="full_size_img/0.5_icon.png" class="full_window_size">(50%)<br>
+                </div>
+                <div class="dropdown-option">
+                    <input type="radio" name="full_ratio" value="1.0" onclick="Handle_select_full_view_size()"><img
+                        src="full_size_img/1.0_icon.png" class="full_window_size">(100%)
+                </div>
+
+            </div>
+        </div>
+
 
         <br />
         <br />

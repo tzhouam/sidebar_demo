@@ -987,3 +987,41 @@ function handleDefaultT() {
     $("#defaultTrigger").hide();
   }
 }
+
+const containers = [
+  "defaultchart1",
+  "defaultchart2",
+  "defaultchart3",
+  "defaultchart4",
+  "defaultTrigger",
+];
+
+function handleHighlight(container) {
+  containers.forEach((item) => {
+    if (item != container) $("#" + item).css("opacity", "0.5");
+    else {
+      $("#" + item).css("border-color", "orange");
+      $("#" + item).css("border-width", "3");
+    }
+  });
+  // $("#defaultchart1").css("background-color", "orange");
+  // $("#defaultchart2").css("opacity", "0.5");
+  // $("#defaultchart3").css("opacity", "0.5");
+  // $("#defaultchart4").css("opacity", "0.5");
+  // $("#defaultTrigger").css("opacity", "0.5");
+}
+
+function handleUndoHighlight(container) {
+  containers.forEach((item) => {
+    if (item != container) $("#" + item).css("opacity", "1");
+    else {
+      $("#" + item).css("border-color", "");
+      $("#" + item).css("border-width", "1");
+    }
+  });
+  // $("#defaultchart1").css("background-color", "");
+  // $("#defaultchart2").css("opacity", "1");
+  // $("#defaultchart3").css("opacity", "1");
+  // $("#defaultchart4").css("opacity", "1");
+  // $("#defaultTrigger").css("opacity", "1");
+}

@@ -28,11 +28,12 @@ function ToFullView() {
   // $("#default2").hide();
   // $("#default3").hide();
   // $("#default1").hide();
+  var rate = Handle_select_full_view_size();
 
   window.close();
   fullWindow = window.open("full.html", "", "width=100,height=100");
   console.log(screen.width);
-  fullWindow.resizeTo(screen.width, screen.height);
+  fullWindow.resizeTo(rate * screen.width, screen.height);
   fullWindow.moveTo(screen.width, 0);
 }
 
@@ -129,4 +130,35 @@ function handleRadioChange() {
   document.cookie = "emocharttype=" + emoChartType;
 
   console.log(document.cookie);
+}
+
+function Handle_select_full_view_size() {
+  var full_view_ratio = -1;
+  // var myselect=window.document.getElementById("selection");
+  //
+  // var index=myselect.selectedIndex;
+  // var win=window.open();
+  // win.alert(index);
+  // if(index) {
+  //   full_view_ratio = myselect.options[index].value;
+  // }
+  var selection_list = [];
+
+  var base = document.getElementById("full_size_selection");
+  for (var i = 0; i < 3; i++) {
+    if (base.children[i].firstElementChild.checked) {
+      full_view_ratio = i;
+      break;
+    }
+  }
+  // var win=window.open();
+  // win.alert(full_view_ratio);
+  full_view_ratio = (full_view_ratio + 1) / 4;
+  if (full_view_ratio > 0.6) {
+    full_view_ratio = 1;
+  }
+  if (full_view_ratio == 0) {
+    full_view_ratio = 0.25;
+  }
+  return full_view_ratio;
 }

@@ -26,13 +26,16 @@
 
     <link href="node_modules/gridstack/dist/gridstack.min.css" rel="stylesheet" />
     <script src="node_modules/gridstack/dist/gridstack-h5.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ztc_added.css">
 </head>
 
 <body onresize="handleWindowResize()" onload="loadFullWindow()">
     <div class="container-fluid m-20">
         <h5>Full view</h5>
 
-        <button type="button" class="btn btn-primary m-2" onclick="ToDefaultView()">default view</button>
+        <button type="button" class="btn btn-primary m-2" onclick="ToDefaultView()">default</button>
         <button type=" button" class="btn btn-primary" onclick="ToDashboard()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
                 viewBox="0 0 16 16">
@@ -42,6 +45,26 @@
                     d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
             </svg>
         </button>
+        <button type="button" class="btn btn-primary m-2" onclick="ToFullView()">Refresh</button>
+        <!-- dropdown menu for full size -->
+        <div class="dropdown" id="d2">
+            <span class="dropdown-title"><b>Full size width&#8744</b></span>
+            <div class="dropdown-content" id="full_size_selection">
+                <div class="dropdown-option">
+                    <input type="radio" name="full_ratio" value="0.25" onclick="Handle_select_full_view_size()"><img
+                        src="full_size_img/0.25_icon.png" class="full_window_size">(25%)<br>
+                </div>
+                <div class="dropdown-option">
+                    <input type="radio" name="full_ratio" value="0.5" onclick="Handle_select_full_view_size()"><img
+                        src="full_size_img/0.5_icon.png" class="full_window_size">(50%)<br>
+                </div>
+                <div class="dropdown-option">
+                    <input type="radio" name="full_ratio" value="1.0" onclick="Handle_select_full_view_size()"><img
+                        src="full_size_img/1.0_icon.png" class="full_window_size">(100%)
+                </div>
+
+            </div>
+        </div>
 
         <div class="grid-stack">
             <div class="grid-stack-item" id="grid-stack-item-1" gs-w="5" gs-h="5">
