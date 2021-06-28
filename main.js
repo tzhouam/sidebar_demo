@@ -13,7 +13,7 @@ function ToDefaultView() {
   window.close();
   defaultWindow = window.open("default.html", "", "width=100,height=100");
   console.log((1 / 20) * screen.width);
-  defaultWindow.resizeTo((1 / 10) * screen.width, screen.height);
+  defaultWindow.resizeTo((1 / 20) * screen.width, screen.height);
   defaultWindow.moveTo(screen.width, 0);
 }
 
