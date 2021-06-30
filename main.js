@@ -13,22 +13,29 @@ function ToDefaultView() {
   window.close();
   defaultWindow = window.open("default.html", "", "width=100,height=100");
   console.log((1 / 20) * screen.width);
-  defaultWindow.resizeTo((1 / 20) * screen.width, screen.height);
+  defaultWindow.resizeTo((1 / 10) * screen.width, screen.height);
   defaultWindow.moveTo(screen.width, 0);
 }
 
-function ToFullView() {
+function ToFullView(rate) {
   console.log("to full view...");
-  // set default width as 1/4 screen width
-  //   console.log(screen.width);
-  //   var width = (1 / 4) * screen.width;
-  // $("#fullchart1").show();
-  // $("#fullchart2").show();
-  // $("#fullchart3").show();
-  // $("#default2").hide();
-  // $("#default3").hide();
-  // $("#default1").hide();
-  var rate = Handle_select_full_view_size();
+
+  // click on full view without setting the rate
+  if (!rate) {
+    // get the rate from cookie
+    var cookieList = document.cookie.split("; ");
+    var name = "fullsize";
+    cookieList.forEach((val) => {
+      if (val.indexOf(name) === 0) rate = val.substring(name.length + 1);
+    });
+    // if no rate info in cookie, initialize it
+    if (!rate) rate = 1;
+  }
+  // click on full view with setting the rate
+  else {
+    // update the rate in cookie
+    document.cookie = "fullsize=" + rate;
+  }
 
   window.close();
   fullWindow = window.open("full.html", "", "width=100,height=100");
@@ -132,33 +139,33 @@ function handleRadioChange() {
   console.log(document.cookie);
 }
 
-function Handle_select_full_view_size() {
-  var full_view_ratio = -1;
-  // var myselect=window.document.getElementById("selection");
-  //
-  // var index=myselect.selectedIndex;
-  // var win=window.open();
-  // win.alert(index);
-  // if(index) {
-  //   full_view_ratio = myselect.options[index].value;
-  // }
-  var selection_list = [];
+// function Handle_select_full_view_size() {
+//   var full_view_ratio = -1;
+//   // var myselect=window.document.getElementById("selection");
+//   //
+//   // var index=myselect.selectedIndex;
+//   // var win=window.open();
+//   // win.alert(index);
+//   // if(index) {
+//   //   full_view_ratio = myselect.options[index].value;
+//   // }
+//   var selection_list = [];
 
-  var base = document.getElementById("full_size_selection");
-  for (var i = 0; i < 3; i++) {
-    if (base.children[i].firstElementChild.checked) {
-      full_view_ratio = i;
-      break;
-    }
-  }
-  // var win=window.open();
-  // win.alert(full_view_ratio);
-  full_view_ratio = (full_view_ratio + 1) / 4;
-  if (full_view_ratio > 0.6) {
-    full_view_ratio = 1;
-  }
-  if (full_view_ratio == 0) {
-    full_view_ratio = 0.25;
-  }
-  return full_view_ratio;
-}
+//   var base = document.getElementById("full_size_selection");
+//   for (var i = 0; i < 3; i++) {
+//     if (base.children[i].firstElementChild.checked) {
+//       full_view_ratio = i;
+//       break;
+//     }
+//   }
+//   // var win=window.open();
+//   // win.alert(full_view_ratio);
+//   full_view_ratio = (full_view_ratio + 1) / 4;
+//   if (full_view_ratio > 0.6) {
+//     full_view_ratio = 1;
+//   }
+//   if (full_view_ratio == 0) {
+//     full_view_ratio = 0.25;
+//   }
+//   return full_view_ratio;
+// }
