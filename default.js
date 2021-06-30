@@ -4,6 +4,12 @@ function handleThresholdChange() {
   $("#thresholdtext").html("> " + threshold);
 }
 
+function handleHidden() {
+  console.log($("#chart_type").is(":visible"));
+  if ($("#chart_type").is(":visible")) $("#hidden_space").hide();
+  else $("#hidden_space").show();
+}
+
 var radialInterval1,
   motorInterval1,
   barInterval1,
@@ -576,12 +582,14 @@ function loadDefaultWindow() {
 function drawRadialChart(container, name) {
   var RadialChart = Highcharts.chart(container, {
     colors: ["#CD7F32"],
+    credits: false,
     chart: {
       type: "column",
       inverted: true,
       polar: true,
       margin: [30, 0, 40, 0],
       height: 140,
+
       // events: {
       //   load: function () {
       //     var series = this.series[0];
