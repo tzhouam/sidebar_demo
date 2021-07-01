@@ -32,7 +32,7 @@
 </head>
 
 <body onresize="handleWindowResize()" onload="loadDefaultWindow()">
-    <div class="container-fluid m-20">
+    <div class="container-fluid">
         <h5>Default View</h5>
 
         <div class="btn-group btn-group-sm">
@@ -72,9 +72,9 @@
                     </svg>
                 </button>
                 <ul id="chart_type" class="dropdown-menu" aria-labelledby="fullsize">
-                    <li><a class="dropdown-item">
-                            <div class="dropdown-option" onmouseover="handleHighlight('defaultTrigger')"
-                                onmouseleave="handleUndoHighlight('defaultTrigger')">
+                    <li><a class="dropdown-item" onmouseover="handleHighlight('defaultTrigger')"
+                            onmouseleave="handleUndoHighlight('defaultTrigger')">
+                            <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheckt" checked
                                         onchange="handleDefaultT()">
@@ -88,9 +88,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item">
-                            <div class="dropdown-option" onmouseover="handleHighlight('defaultchart3')"
-                                onmouseleave="handleUndoHighlight('defaultchart3')">
+                        <a class="dropdown-item" onmouseover="handleHighlight('defaultchart3')"
+                            onmouseleave="handleUndoHighlight('defaultchart3')">
+                            <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheck3" checked
                                         onchange="handleDefault3()">
@@ -103,9 +103,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item">
-                            <div class="dropdown-option" onmouseover="handleHighlight('defaultchart2')"
-                                onmouseleave="handleUndoHighlight('defaultchart2')">
+                        <a class="dropdown-item" onmouseover="handleHighlight('defaultchart2')"
+                            onmouseleave="handleUndoHighlight('defaultchart2')">
+                            <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheck2" checked
                                         onchange="handleDefault2()">
@@ -119,9 +119,9 @@
                             </div>
                         </a>
                     </li>
-                    <li><a class="dropdown-item">
-                            <div class="dropdown-option" onmouseover="handleHighlight('defaultchart1')"
-                                onmouseleave="handleUndoHighlight('defaultchart1')">
+                    <li><a class="dropdown-item" onmouseover="handleHighlight('defaultchart1')"
+                            onmouseleave="handleUndoHighlight('defaultchart1')">
+                            <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheck1" checked
                                         onchange="handleDefault1()">
@@ -134,9 +134,9 @@
                             </div>
                         </a>
                     </li>
-                    <li><a class="dropdown-item">
-                            <div class="dropdown-option" onmouseover="handleHighlight('defaultchart4')"
-                                onmouseleave="handleUndoHighlight('defaultchart4')">
+                    <li><a class="dropdown-item" onmouseover="handleHighlight('defaultchart4')"
+                            onmouseleave="handleUndoHighlight('defaultchart4')">
+                            <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheck4" checked
                                         onchange="handleDefault4()">
@@ -255,19 +255,10 @@
         </div>
 
         <ul id="sortable">
+            <!-- trigger -->
             <li>
-                <!-- trigger -->
-                <!-- <div class="form-check form-switch mt-2">
-                    <input class="form-check-input" type="checkbox" id="defaultcheckt" checked
-                        onchange="handleDefaultT()">
-                    <label class="form-check-label" for="defaultcheckt">trigger</label>
-                </div> -->
                 <div class="card" id="defaultTrigger"
-                    style="width: 18rem; height:3rem; margin:5px 0px 5px 0px; padding: 5px; align-items: center;">
-
-                    <!-- <img id="trigger-img" src="./emoji/confused.jpeg" style="width: 50px; height:50px; display:none">
-                    <p id="trigger-text" class="trigger-text"></p> -->
-
+                    style="width: 18rem; height:3rem; margin:5px 0px 5px 0px; border-color: #caf0f8; border-width: 3px;padding: 5px; align-items: center;">
                     <svg id="trigger-svg" style="width: 60px; height:60px;"></svg>
 
                     <label id="thresholdtext" for="threshold" class="form-label">> 50</label>
@@ -279,27 +270,16 @@
 
             <li>
                 <!-- default 3 concentration-->
-                <!-- <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="defaultcheck3" checked
-                        onchange="handleDefault3()">
-                    <label class="form-check-label" for="defaultcheck3">concentration</label>
-                </div> -->
                 <div class="card" id="defaultchart3"
-                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; padding: 5px; cursor:pointer"
+                    style="width: 18rem; height: 10rem; border-color: #90e0ef; border-width: 3px;margin:5px 0px 5px 0px; padding: 2px; cursor:pointer"
                     onclick="handleDefaultChart3()">
                 </div>
             </li>
 
             <li>
                 <!-- default 2 confused-->
-                <!-- <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="defaultcheck2" checked
-                        onchange="handleDefault2()">
-                    <label class="form-check-label" for="defaultcheck2">confused</label>
-                </div> -->
-
                 <div class="card" id="defaultchart2"
-                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; padding: 5px; cursor:pointer"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #00b4d8; border-width: 3px;padding: 2px; cursor:pointer"
                     onclick="handleDefaultChart2()">
 
                 </div>
@@ -313,7 +293,7 @@
                     <label class="form-check-label" for="defaultcheck1">gaze</label>
                 </div> -->
                 <div class="card" id="defaultchart1"
-                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; padding: 5px; cursor:pointer"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #0077b6; border-width: 3px;padding: 2px; cursor:pointer"
                     onclick="handleDefaultChart1()">
                 </div>
             </li>
@@ -322,7 +302,7 @@
                 <!-- default 4 emotional-->
                 <!-- <div clas -->
                 <div class="card" id="defaultchart4"
-                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; padding: 5px; cursor:pointer;"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #03045e; border-width: 3px;padding: 2px; cursor:pointer;"
                     onclick="handleDefaultChart4()">
                 </div>
             </li>

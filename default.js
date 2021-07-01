@@ -589,6 +589,10 @@ function drawRadialChart(container, name) {
       polar: true,
       margin: [30, 0, 40, 0],
       height: 140,
+      // backgroundColor: "lightblue",
+      // borderColor: "lightblue",
+      // borderWidth: 2,
+      // plotBackgroundImage: "info_img/engage.png",
 
       // events: {
       //   load: function () {
@@ -612,6 +616,7 @@ function drawRadialChart(container, name) {
     },
     title: {
       text: name,
+      style: { fontSize: "13px" },
     },
     tooltip: {
       enabled: false,
@@ -664,6 +669,8 @@ function drawRadialChart(container, name) {
     ],
   });
 
+  RadialChart.renderer.image("info_img/confuse.png", 36, 53, 22, 22).add();
+
   var radialInterval = setInterval(function () {
     if (RadialChart) {
       data = [];
@@ -686,9 +693,7 @@ function drawMotorChart(container, name) {
 
     title: {
       text: name,
-      style: {
-        fontSize: ($(window).width - 50) / 10,
-      },
+      style: { fontSize: "13px" },
     },
 
     pane: {
@@ -813,6 +818,7 @@ function drawBarChart(container, name, barInterval) {
     },
     title: {
       text: name,
+      style: { fontSize: "13px" },
     },
     tooltip: {
       enabled: false,
@@ -881,7 +887,7 @@ function handleDefaultChart1() {
   } else if (default1 == 1) {
     radialInterval1 = drawRadialChart("defaultchart1", "Gaze");
     document.cookie = "gazecharttype=Radial";
-    $("#defaultchart1").css("height", 160);
+    $("#defaultchart1").css("height", 140);
   } else {
     barInterval1 = drawBarChart("defaultchart1", "Gaze");
     document.cookie = "gazecharttype=Bar";
