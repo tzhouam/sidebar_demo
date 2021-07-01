@@ -48,7 +48,7 @@ function ToDashboard() {
   console.log("to dashboard...");
   window.close();
   dashboard = window.open("index.html", "", "width=100,height=100");
-  dashboard.resizeTo(screen.width / 1.5, screen.height / 1.5);
+  dashboard.resizeTo(screen.width, screen.height);
   dashboard.moveTo(0, 0);
 }
 
@@ -116,6 +116,15 @@ function loadWindow() {
       emoChartType = val.substring(emoChartName.length + 1);
   });
   $("input[name='emoradio'][value=" + emoChartType + "]").prop("checked", true);
+
+  // update theme status
+  var themeid,
+    themeName = "themeid";
+  cookieList.forEach((val) => {
+    if (val.indexOf(themeName) === 0)
+      themeid = val.substring(themeName.length + 1);
+  });
+  $("input[name='themeradio'][value=" + themeid + "]").prop("checked", true);
 }
 
 var gazeChartType = "Radial";
@@ -147,6 +156,11 @@ function handleDisplay(checkButton, chartContainer) {
   }
 }
 
+function handleThemeChange() {
+  themeid = $("input[name='themeradio']:checked").val();
+  console.log("themeradio:", $("input[name='themeradio']:checked"));
+  document.cookie = "themeid=" + themeid;
+}
 // function Handle_select_full_view_size() {
 //   var full_view_ratio = -1;
 //   // var myselect=window.document.getElementById("selection");
