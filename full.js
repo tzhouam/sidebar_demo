@@ -354,26 +354,24 @@ function loadFullWindow() {
   });
 }
 
-function handleFull1() {
-  if ($("#fullcheck1")[0].checked) {
-    $("#fullchart1").show();
-  } else {
-    $("#fullchart1").hide();
-  }
+const containers = ["fullchart1", "fullchart2", "fullchart3"];
+
+function handleHighlight(container) {
+  containers.forEach((item) => {
+    if (item != container) $("#" + item).css("opacity", "0.5");
+    else {
+      $("#" + item).css("border-color", "orange");
+      $("#" + item).css("border-width", "3");
+    }
+  });
 }
 
-function handleFull2() {
-  if ($("#fullcheck2")[0].checked) {
-    $("#fullchart2").show();
-  } else {
-    $("#fullchart2").hide();
-  }
-}
-
-function handleFull3() {
-  if ($("#fullcheck3")[0].checked) {
-    $("#fullchart3").show();
-  } else {
-    $("#fullchart3").hide();
-  }
+function handleUndoHighlight(container) {
+  containers.forEach((item) => {
+    if (item != container) $("#" + item).css("opacity", "1");
+    else {
+      $("#" + item).css("border-color", "");
+      $("#" + item).css("border-width", "1");
+    }
+  });
 }

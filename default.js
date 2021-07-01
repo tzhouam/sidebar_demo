@@ -962,48 +962,6 @@ function handleDefaultChart4() {
   default4 = (default4 + 1) % 3;
 }
 
-function handleDefault1() {
-  //   console.log("handle default 1");
-  //   console.log($("#defaultcheck1")[0].checked);
-  if ($("#defaultcheck1")[0].checked) {
-    $("#defaultchart1").show();
-  } else {
-    $("#defaultchart1").hide();
-  }
-}
-
-function handleDefault2() {
-  if ($("#defaultcheck2")[0].checked) {
-    $("#defaultchart2").show();
-  } else {
-    $("#defaultchart2").hide();
-  }
-}
-
-function handleDefault3() {
-  if ($("#defaultcheck3")[0].checked) {
-    $("#defaultchart3").show();
-  } else {
-    $("#defaultchart3").hide();
-  }
-}
-
-function handleDefault4() {
-  if ($("#defaultcheck4")[0].checked) {
-    $("#defaultchart4").show();
-  } else {
-    $("#defaultchart4").hide();
-  }
-}
-
-function handleDefaultT() {
-  if ($("#defaultcheckt")[0].checked) {
-    $("#defaultTrigger").show();
-  } else {
-    $("#defaultTrigger").hide();
-  }
-}
-
 const containers = [
   "defaultchart1",
   "defaultchart2",
@@ -1020,11 +978,6 @@ function handleHighlight(container) {
       $("#" + item).css("border-width", "3");
     }
   });
-  // $("#defaultchart1").css("background-color", "orange");
-  // $("#defaultchart2").css("opacity", "0.5");
-  // $("#defaultchart3").css("opacity", "0.5");
-  // $("#defaultchart4").css("opacity", "0.5");
-  // $("#defaultTrigger").css("opacity", "0.5");
 }
 
 function handleUndoHighlight(container) {
@@ -1035,9 +988,4 @@ function handleUndoHighlight(container) {
       $("#" + item).css("border-width", "1");
     }
   });
-  // $("#defaultchart1").css("background-color", "");
-  // $("#defaultchart2").css("opacity", "1");
-  // $("#defaultchart3").css("opacity", "1");
-  // $("#defaultchart4").css("opacity", "1");
-  // $("#defaultTrigger").css("opacity", "1");
 }

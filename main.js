@@ -139,6 +139,14 @@ function handleRadioChange() {
   console.log(document.cookie);
 }
 
+function handleDisplay(checkButton, chartContainer) {
+  if ($("#" + checkButton)[0].checked) {
+    $("#" + chartContainer).show();
+  } else {
+    $("#" + chartContainer).hide();
+  }
+}
+
 // function Handle_select_full_view_size() {
 //   var full_view_ratio = -1;
 //   // var myselect=window.document.getElementById("selection");

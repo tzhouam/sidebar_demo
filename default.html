@@ -77,7 +77,7 @@
                             <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheckt" checked
-                                        onchange="handleDefaultT()">
+                                        onchange="handleDisplay('defaultcheckt','defaultTrigger')">
                                     <div>
                                         <img src="info_img/trigger.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheckt">trigger</label>
@@ -93,7 +93,7 @@
                             <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheck3" checked
-                                        onchange="handleDefault3()">
+                                        onchange="handleDisplay('defaultcheck3','defaultchart3')">
                                     <div class="selection_text_and_icon">
                                         <img src="info_img/engage.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheck3">engagement</label>
@@ -108,7 +108,7 @@
                             <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheck2" checked
-                                        onchange="handleDefault2()">
+                                        onchange="handleDisplay('defaultcheck2','defaultchart2')">
                                     <div class="selection_text_and_icon">
                                         <img src="info_img/confuse.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheck2">confused</label>
@@ -124,7 +124,7 @@
                             <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheck1" checked
-                                        onchange="handleDefault1()">
+                                        onchange="handleDisplay('defaultcheck1','defaultchart1')">
                                     <div>
                                         <img src="info_img/gaze.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheck1">gaze</label>
@@ -139,7 +139,7 @@
                             <div class="dropdown-option">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="defaultcheck4" checked
-                                        onchange="handleDefault4()">
+                                        onchange="handleDisplay('defaultcheck4','defaultchart4')">
                                     <div class="selection_text_and_icon">
                                         <img src="info_img/emotion.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheck4">emotion</label>
@@ -164,92 +164,6 @@
             </button>
 
         </div>
-
-        <!-- dropdown menu for full size -->
-        <!-- <div class="dropdown" id="d2">
-            <span class="dropdown-title"><b>Full size width&#8744</b></span>
-            <div class="dropdown-content" id="full_size_selection">
-                <div class="dropdown-option">
-                    <input type="radio" name="full_ratio" value="0.25" onclick="Handle_select_full_view_size()"><img
-                        src="full_size_img/0.25_icon.png" class="full_window_size">(25%)<br>
-                </div>
-                <div class="dropdown-option">
-                    <input type="radio" name="full_ratio" value="0.5" onclick="Handle_select_full_view_size()"><img
-                        src="full_size_img/0.5_icon.png" class="full_window_size">(50%)<br>
-                </div>
-                <div class="dropdown-option">
-                    <input type="radio" name="full_ratio" value="1.0" onclick="Handle_select_full_view_size()"><img
-                        src="full_size_img/1.0_icon.png" class="full_window_size">(100%)
-                </div>
-
-            </div>
-        </div> -->
-
-        <!-- dropdown menu for chart -->
-        <!-- <div class="dropdown" id="handle_content">
-            <span class="dropdown-title"><b>Selection&#8744</b></span>
-            <div class="dropdown-content">
-                <div class="dropdown-option" onmouseover="handleHighlight('defaultTrigger')"
-                    onmouseleave="handleUndoHighlight('defaultTrigger')">
-                    <div class="form-check form-switch mt-2">
-                        <input class="form-check-input" type="checkbox" id="defaultcheckt" checked
-                            onchange="handleDefaultT()">
-                        <div>
-                            <label class="form-check-label" for="defaultcheckt">trigger</label>
-                            <img src="info_img/trigger.png" class="content_icon">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="dropdown-option" onmouseover="handleHighlight('defaultchart1')"
-                    onmouseleave="handleUndoHighlight('defaultchart1')">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="defaultcheck1" checked
-                            onchange="handleDefault1()">
-                        <div class="selection_text_and_icon">
-                            <label class="form-check-label" for="defaultcheck1">gaze</label>
-                            <img src="info_img/gaze.png" class="content_icon">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="dropdown-option" onmouseover="handleHighlight('defaultchart2')"
-                    onmouseleave="handleUndoHighlight('defaultchart2')">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="defaultcheck2" checked
-                            onchange="handleDefault2()">
-                        <div class="selection_text_and_icon">
-                            <label class="form-check-label" for="defaultcheck2">confused</label>
-                            <img src="info_img/confuse.png" class="content_icon">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="dropdown-option" onmouseover="handleHighlight('defaultchart3')"
-                    onmouseleave="handleUndoHighlight('defaultchart3')">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="defaultcheck3" checked
-                            onchange="handleDefault3()">
-                        <div class="selection_text_and_icon">
-                            <label class="form-check-label" for="defaultcheck3">engagement</label>
-                            <img src="info_img/engage.png" class="content_icon">
-                        </div>
-                    </div>
-                </div>
-                <div class="dropdown-option" onmouseover="handleHighlight('defaultchart4')"
-                    onmouseleave="handleUndoHighlight('defaultchart4')">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="defaultcheck4" checked
-                            onchange="handleDefault4()">
-                        <div class="selection_text_and_icon">
-                            <label class="form-check-label" for="defaultcheck4">emotion</label>
-                            <img src="info_img/emotion.png" class="content_icon">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
 
         <div id="hidden_space" style="width: 18rem; height:190px; display: none;">
         </div>

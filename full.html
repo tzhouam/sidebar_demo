@@ -80,37 +80,62 @@
                     </li>
                 </ul>
             </div>
-        </div>
 
-        <!-- dropdown menu for full size -->
-        <!-- <div class="dropdown" id="d2">
-            <span class="dropdown-title"><b>Full size width&#8744</b></span>
-            <div class="dropdown-content" id="full_size_selection">
-                <div class="dropdown-option">
-                    <input type="radio" name="full_ratio" value="0.25" onclick="Handle_select_full_view_size()"><img
-                        src="full_size_img/0.25_icon.png" class="full_window_size">(25%)<br>
-                </div>
-                <div class="dropdown-option">
-                    <input type="radio" name="full_ratio" value="0.5" onclick="Handle_select_full_view_size()"><img
-                        src="full_size_img/0.5_icon.png" class="full_window_size">(50%)<br>
-                </div>
-                <div class="dropdown-option">
-                    <input type="radio" name="full_ratio" value="1.0" onclick="Handle_select_full_view_size()"><img
-                        src="full_size_img/1.0_icon.png" class="full_window_size">(100%)
-                </div>
-
+            <!-- chart type -->
+            <div class="btn-group btn-group-sm" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </button>
+                <ul id="chart_type" class="dropdown-menu" aria-labelledby="fullsize">
+                    <li><a class="dropdown-item" onmouseover="handleHighlight('fullchart1')"
+                            onmouseleave="handleUndoHighlight('fullchart1')">
+                            <div class="dropdown-option">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="fullcheck1" checked
+                                        onchange="handleDisplay('fullcheck1','fullchart1')">
+                                    <label class="form-check-label" for="fullcheck1">chart 1</label>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" onmouseover="handleHighlight('fullchart2')"
+                            onmouseleave="handleUndoHighlight('fullchart2')">
+                            <div class="dropdown-option">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="fullcheck2" checked
+                                        onchange="handleDisplay('fullcheck2','fullchart2')">
+                                    <label class="form-check-label" for="fullcheck2">chart 2</label>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" onmouseover="handleHighlight('fullchart3')"
+                            onmouseleave="handleUndoHighlight('fullchart3')">
+                            <div class="dropdown-option">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="fullcheck3" checked
+                                        onchange="handleDisplay('fullcheck3','fullchart3')">
+                                    <label class="form-check-label" for="fullcheck3">chart 3</label>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div> -->
+        </div>
 
         <div class="grid-stack">
             <div class="grid-stack-item" id="grid-stack-item-1" gs-w="5" gs-h="5">
                 <div class="grid-stack-item-content" id="fulldiv1">
                     <!-- full 1-->
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="fullcheck1" checked
-                            onchange="handleFull1()">
-                        <label class="form-check-label" for="fullcheck1">1</label>
-                    </div>
                     <div class="card" id="fullchart1" style="margin:5px 0px 5px 0px; padding: 15px;">
                     </div>
                 </div>
@@ -119,11 +144,6 @@
             <div class="grid-stack-item" id="grid-stack-item-2" gs-w="5" gs-h="5">
                 <div class="grid-stack-item-content">
                     <!-- full 2-->
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="fullcheck2" checked
-                            onchange="handleFull2()">
-                        <label class="form-check-label" for="fullcheck2">2</label>
-                    </div>
                     <div class="card" id="fullchart2" style="margin:5px 0px 5px 0px; padding: 15px;">
                     </div>
                 </div>
@@ -132,11 +152,6 @@
             <div class="grid-stack-item" id="grid-stack-item-3" gs-w="5" gs-h="5">
                 <div class="grid-stack-item-content">
                     <!-- full 3-->
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="fullcheck3" checked
-                            onchange="handleFull3()">
-                        <label class="form-check-label" for="fullcheck3">3</label>
-                    </div>
                     <div class="card" id="fullchart3" style=" margin:5px 0px 5px 0px; padding: 15px;">
                     </div>
                 </div>
