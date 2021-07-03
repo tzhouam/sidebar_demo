@@ -218,7 +218,39 @@
                 <!-- <div clas -->
                 <div class="card" id="defaultchart4"
                     style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #03045e; border-width: 3px;padding: 2px; cursor:pointer;"
-                    onclick="handleDefaultChart4()">
+                    onclick="handleDefaultChart4()" onload="test()">
+                        <div id="emotion_container">
+                            <p id="data_test" style="font-size: xx-small;display: none"></p>
+                            <img src="eomtionwheel.png" style="display: none;" id="emotion_wheel_img">
+                            <img src="eomtionwheel_with_neutral.png" style="display: none;" id="emotion_wheel_neutral_img">
+                            <canvas width="100px" height="100px"  id="emotion_wheel"
+                                style="background-image: url('eomtionwheel_bg.png');background-size: 100px 100px;background-repeat: no-repeat;"
+                            >
+                                Your explorer doesn't support canvas, please upload your explorer.
+                            </canvas>
+                            <p style="font-size: xx-small;display: none" id="check_input"></p>
+                        </div>
+                    <script>
+                        function test(){
+                            var x = [];
+                            var y = [];
+                            for (var m = 0; m < 100; m++) {
+                                x[m] = Math.random() * 2 - 1;
+                                y[m] = Math.random() * 2 - 1;
+                            }
+                            var input = document.getElementById("check_input");
+                            input.innerText="";
+                            for (m = 0; m < 100; m++) {
+
+                                input.innerText += x[m] + " " + y[m] + " ";
+                                if (m % 10 === 0) {
+                                    input.innerText += "\n";
+                                }
+                            }
+
+                            draw(x, y, 100, 100);
+                        }
+                    </script>
                 </div>
             </li>
         </ul>
