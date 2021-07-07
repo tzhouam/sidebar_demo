@@ -1,36 +1,61 @@
-function loadFullWindow() {
-  let grid = GridStack.init();
+var fullinterval1, fullinterval2, fullinterval3;
 
-  grid.on("resize", function (e, items) {
-    console.log("resizing", e);
-    // fullChart1.reflow();
-    // fullChart2.reflow();
-    // fullChart3.reflow();
-    fullChart1.setSize(
-      $("#grid-stack-item-1").width() - 100,
-      $("#grid-stack-item-1").height() - 100
-    );
-    fullChart2.setSize(
-      $("#grid-stack-item-2").width() - 100,
-      $("#grid-stack-item-2").height() - 100
-    );
-    fullChart3.setSize(
-      $("#grid-stack-item-3").width() - 100,
-      $("#grid-stack-item-3").height() - 100
-    );
-    console.log($("#grid-stack-item-1").width());
+function loadFullWindow() {
+  let grid = GridStack.init({
+    cellHeight: 100,
   });
 
-  const width = $(window).width - 50;
-  console.log($("#fulldiv1").width());
-  // $("#full2").css("width", width);
-  //   $("#full2").css("height", width + 50);
-  // $("#full3").css("width", width);
-  //   $("#full3").css("height", width + 50);
-  // $("#full1").css("width", width);
-  //   $("#full1").css("height", width + 50);
+  // grid.column(14, "moveScale");
 
+  grid.on("resize", function (e, items) {
+    fullChart1.setSize(
+      $("#grid-stack-item-1").width() - 50,
+      $("#grid-stack-item-1").height() - 50
+    );
+    fullChart2.setSize(
+      $("#grid-stack-item-2").width() - 50,
+      $("#grid-stack-item-2").height() - 50
+    );
+    fullChart3.setSize(
+      $("#grid-stack-item-3").width() - 50,
+      $("#grid-stack-item-3").height() - 50
+    );
+    // console.log($("#grid-stack-item-1").width());
+  });
+
+  // get theme
+  var theme;
+  $.getJSON("./theme.json", function (data) {
+    var themes = data.theme;
+    // console.log("themes:",themes);
+    var cookieList = document.cookie.split("; ");
+    var themeid,
+      themeName = "themeid";
+    cookieList.forEach((val) => {
+      if (val.indexOf(themeName) === 0)
+        themeid = val.substring(themeName.length + 1);
+    });
+    theme = themes[themeid];
+
+    // set theme
+    for (const [key, value] of Object.entries(theme.full)) {
+      console.log(`${key}: ${value}`);
+      $(`#${key}`).css("border-color", `rgb(${value})`);
+      $(`#${key}Check`).css("background-color", `rgba(${value},0.5)`);
+      // $(`#${key}Check`).css("opacity", 0.5);
+    }
+  });
+
+  drawFullChart1();
+
+  drawFullChart2();
+
+  drawFullChart3();
+}
+
+function drawFullChart1() {
   fullChart1 = new Highcharts.Chart({
+    credits: false,
     chart: {
       renderTo: "fullchart1",
       type: "column",
@@ -39,7 +64,7 @@ function loadFullWindow() {
         load: function () {
           // set up the updating of the chart each second
           var series = this.series[0];
-          setInterval(function () {
+          fullinterval1 = setInterval(function () {
             var data = [];
             data.push([
               "01:Inner brow raiser",
@@ -158,11 +183,13 @@ function loadFullWindow() {
       },
     ],
   });
+}
 
-  // Age categories
+function drawFullChart2() {
+  // categories
   var categories = ["whether in/out of slides", "whether in/out of screen"];
-
   fullChart2 = Highcharts.chart("fullchart2", {
+    credits: false,
     chart: {
       type: "bar",
       events: {
@@ -170,7 +197,7 @@ function loadFullWindow() {
           // set up the updating of the chart each second
           var series = this.series[0];
           console.log(series);
-          setInterval(function () {
+          fullinterval2 = setInterval(function () {
             var data = [];
             data.push([
               //   Math.round(Math.random() * 100),
@@ -261,8 +288,11 @@ function loadFullWindow() {
       },
     ],
   });
+}
 
+function drawFullChart3() {
   fullChart3 = Highcharts.chart("fullchart3", {
+    credits: false,
     chart: {
       type: "spline",
       animation: Highcharts.svg, // don't animate in old IE
@@ -271,7 +301,7 @@ function loadFullWindow() {
         load: function () {
           // set up the updating of the chart each second
           var series = this.series[0];
-          setInterval(function () {
+          fullinterval3 = setInterval(function () {
             var x = new Date().getTime(), // current time
               y = Math.random();
             series.addPoint([x, y], true, true);
@@ -360,8 +390,8 @@ function handleHighlight(container) {
   containers.forEach((item) => {
     if (item != container) $("#" + item).css("opacity", "0.5");
     else {
-      $("#" + item).css("border-color", "orange");
-      $("#" + item).css("border-width", "3");
+      // $("#" + item).css("border-color", "orange");
+      $("#" + item).css("border-width", "4");
     }
   });
 }
@@ -370,8 +400,68 @@ function handleUndoHighlight(container) {
   containers.forEach((item) => {
     if (item != container) $("#" + item).css("opacity", "1");
     else {
-      $("#" + item).css("border-color", "");
-      $("#" + item).css("border-width", "1");
+      // $("#" + item).css("border-color", "");
+      $("#" + item).css("border-width", "2");
     }
   });
+}
+
+function handleDisplayFull(id) {
+  const charts = [fullChart1, fullChart2, fullChart3],
+    grid = document.querySelector(".grid-stack").gridstack;
+
+  if ($(`#fullcheck${id.toString()}`)[0].checked) {
+    grid.addWidget(
+      `<div class="grid-stack-item" id="grid-stack-item-${id.toString()}" gs-w="5" gs-h="3">
+        <div class="grid-stack-item-content" id="fulldiv${id.toString()}">
+          <div class="card" id="fullchart${id.toString()}" style="margin:5px 0px 5px 0px; padding: 15px;">
+          </div>
+        </div>
+      </div>`
+    );
+
+    // get theme
+    var theme;
+    $.getJSON("./theme.json", function (data) {
+      var themes = data.theme;
+      // console.log("themes:",themes);
+      var cookieList = document.cookie.split("; ");
+      var themeid,
+        themeName = "themeid";
+      cookieList.forEach((val) => {
+        if (val.indexOf(themeName) === 0)
+          themeid = val.substring(themeName.length + 1);
+      });
+      theme = themes[themeid];
+
+      // set theme
+      for (const [key, value] of Object.entries(theme.full)) {
+        console.log(`${key}: ${value}`);
+        $(`#${key}`).css("border-color", `rgb(${value})`);
+        $(`#${key}Check`).css("background-color", `rgba(${value},0.5)`);
+        // $(`#${key}Check`).css("opacity", 0.5);
+      }
+    });
+
+    if (id == 1) {
+      clearInterval(fullinterval1);
+      drawFullChart1();
+    } else if (id == 2) {
+      clearInterval(fullinterval2);
+      drawFullChart2();
+    } else if (id == 3) {
+      clearInterval(fullinterval3);
+      drawFullChart3();
+    }
+  } else {
+    // remove highchart
+    charts[id - 1].destroy();
+    // hide card container
+    // $(`#fullchart${id.toString()}`).hide();
+    // remove gridstack widget
+    var el = grid
+      .getGridItems()
+      .filter((item) => item.id == `grid-stack-item-${id.toString()}`)[0];
+    grid.removeWidget(el);
+  }
 }
