@@ -71,9 +71,8 @@
   border-radius: 5px;
   padding-left: 5px;
 }
-.dropdown-option:hover {
+.dropdown-item:hover {
   border: black 2px;
-  background-color: rgb(76, 51, 100);
 }
 .dropdown-content {
   display: none;

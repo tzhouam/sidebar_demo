@@ -1,29 +1,63 @@
 {
-  "theme": [
-    {
-      "defaultTrigger": "247, 209, 205",
-      "defaultchart1": "179, 146, 172",
-      "defaultchart2": "209, 179, 196",
-      "defaultchart3": "232, 194, 202",
-      "defaultchart4": "115, 93, 120",
+  "theme": {
+    "theme_orange": {
+      "default": {
+        "defaultTrigger": "254,240,217",
+        "defaultchart1": "227,74,51",
+        "defaultchart2": "252,141,89",
+        "defaultchart3": "253,204,138",
+        "defaultchart4": "179,0,0"
+      },
       "motor": [
-        [0.1, "#e0b1cb"],
-        [0.5, "#9f86c0"],
-        [0.9, "#231942"]
-      ]
+        [0.1, "#fee8c8"],
+        [0.5, "#fdbb84"],
+        [0.9, "#e34a33"]
+      ],
+      "full": {
+        "fullchart1": "253,204,138",
+        "fullchart2": "252,141,89",
+        "fullchart3": "227,74,51"
+      }
     },
 
-    {
-      "defaultTrigger": "247, 209, 205",
-      "defaultchart1": "179, 146, 172",
-      "defaultchart2": "209, 179, 196",
-      "defaultchart3": "232, 194, 202",
-      "defaultchart4": "115, 93, 120",
+    "theme_blue": {
+      "default": {
+        "defaultTrigger": "239,243,255",
+        "defaultchart1": "49,130,189",
+        "defaultchart2": "107,174,214",
+        "defaultchart3": "189,215,231",
+        "defaultchart4": "8,81,156"
+      },
       "motor": [
-        [0.1, "#e0b1cb"],
-        [0.5, "#9f86c0"],
-        [0.9, "#231942"]
-      ]
+        [0.1, "#deebf7"],
+        [0.5, "#9ecae1"],
+        [0.9, "#3182bd"]
+      ],
+      "full": {
+        "fullchart1": "189,215,231",
+        "fullchart2": "107,174,214",
+        "fullchart3": "49,130,189"
+      }
+    },
+
+    "theme_green": {
+      "default": {
+        "defaultTrigger": "237,248,233",
+        "defaultchart1": "49,163,84",
+        "defaultchart2": "116,196,118",
+        "defaultchart3": "186,228,179",
+        "defaultchart4": "0,109,44"
+      },
+      "motor": [
+        [0.1, "#e5f5e0"],
+        [0.5, "#a1d99b"],
+        [0.9, "#31a354"]
+      ],
+      "full": {
+        "fullchart1": "186,228,179",
+        "fullchart2": "116,196,118",
+        "fullchart3": "49,163,84"
+      }
     }
-  ]
+  }
 }
