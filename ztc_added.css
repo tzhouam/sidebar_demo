@@ -1,0 +1,109 @@
+.full_window_size {
+  width: 30px;
+  margin: 3px;
+}
+/* .card{
+    align-items: center;
+    border-width: 5px;
+    border-style: solid;
+    margin: auto;
+    border-radius: 10px;
+    padding: 5px;
+
+
+} */
+#selection_outer {
+  display: inline-block;
+  margin: auto;
+}
+#selection {
+  display: block;
+}
+.content_icon {
+  width: 20px;
+  height: 20px;
+  /* display: block; */
+}
+/* .form-check-input {
+  margin-top: 25px;
+} */
+/*.grid-stack-item{*/
+/*    align-items: center;*/
+/*    border-width: 5px;*/
+/*    border-style: solid;*/
+/*    margin: auto;*/
+/*    border-radius: 10px;*/
+/*    padding: 5px;*/
+/*}*/
+/*#grid-stack-item-1{border-color: rgb(150,255,150);}*/
+/*#grid-stack-item-2{border-color: rgb(255,150,150);}*/
+/*#grid-stack-item-3{border-color: rgb(205,150,255);}*/
+
+/* body {
+  font-family: "Times New Roman";
+} */
+/* .dropdown {
+  position: relative;
+  display: block;
+  width: 130px;
+} */
+/* .form-check-input {
+  position: relative;
+  top: 2px;
+} */
+/* .form-check-label {
+  position: relative;
+  top: 0px;
+} */
+.dropdown-title {
+  margin: auto;
+  border-radius: 10px;
+  cursor: default;
+  padding: 0px 5px;
+  text-align: center;
+  margin-bottom: 3px;
+}
+.dropdown-option {
+  margin: auto;
+  margin: 0px 0px;
+  display: inline-block;
+  /* width: 30px; */
+  border-radius: 5px;
+  padding-left: 5px;
+}
+.dropdown-option:hover {
+  border: black 2px;
+  background-color: rgb(76, 51, 100);
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+
+  width: 130px;
+  box-shadow: 0px 8px 16px 0px gray;
+  padding: 0px 0px;
+
+  z-index: 1;
+  overflow: auto;
+  border-radius: 10px;
+  font-size: small;
+  background-color: rgb(255, 255, 255);
+}
+/* .dropdown:hover .dropdown-content {
+  display: block;
+} */
+/* .dropdown:hover {
+  background-color: rgb(220, 220, 220);
+
+  border-radius: 10px;
+} */
+/* .dropdown-menu.show {
+  width: 20px;
+  position: relative;
+  opacity: 0.8;
+  display: inline-block;
+} */
+/* 
+.radiobtn {
+  width: 360px !important;
+} */

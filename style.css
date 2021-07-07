@@ -1,7 +1,3 @@
-.highcharts-title {
-  font: 15;
-}
-
 p.trigger-text {
   font-size: 22px;
   font-family: sans-serif;
@@ -31,3 +27,8 @@ p.trigger-text {
   height: 1.5em;
   line-height: 1.2em;
 }
+
+/* .highcharts-background {
+  opacity: 0.3;
+  fill: rgb(164, 214, 248);
+} */
