@@ -18,6 +18,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <!-- <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script> -->
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -25,6 +30,13 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+    <!-- <script src="Highcharts-9.1.2/code/highcharts.js"></script>
+    <script src="Highcharts-9.1.2/code/modules/exporting.js"></script>
+    <script src="Highcharts-9.1.2/code/modules/export-data.js"></script>
+    <script src="Highcharts-9.1.2/code/modules/accessibility.js"></script>
+    <script src="Highcharts-9.1.2/code/highcharts-more.js"></script>
+    <script src="Highcharts-9.1.2/code/modules/solid-gauge.js"></script> -->
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="ztc_added.css">
@@ -80,7 +92,7 @@
                                     <input class="form-check-input" type="checkbox" id="defaultcheckt" checked
                                         onchange="handleDisplay('defaultcheckt','defaultTrigger')">
                                     <div>
-                                        <img src="info_img/trigger.png" class="content_icon">
+                                        <img src="icon_img/trigger.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheckt">trigger</label>
                                     </div>
 
@@ -96,7 +108,7 @@
                                     <input class="form-check-input" type="checkbox" id="defaultcheck3" checked
                                         onchange="handleDisplay('defaultcheck3','defaultchart3')">
                                     <div class="selection_text_and_icon">
-                                        <img src="info_img/engage.png" class="content_icon">
+                                        <img src="icon_img/Engagement.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheck3">engagement</label>
                                     </div>
                                 </div>
@@ -111,7 +123,7 @@
                                     <input class="form-check-input" type="checkbox" id="defaultcheck2" checked
                                         onchange="handleDisplay('defaultcheck2','defaultchart2')">
                                     <div class="selection_text_and_icon">
-                                        <img src="info_img/confuse.png" class="content_icon">
+                                        <img src="icon_img/Confused.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheck2">confused</label>
 
                                     </div>
@@ -127,7 +139,7 @@
                                     <input class="form-check-input" type="checkbox" id="defaultcheck1" checked
                                         onchange="handleDisplay('defaultcheck1','defaultchart1')">
                                     <div>
-                                        <img src="info_img/gaze.png" class="content_icon">
+                                        <img src="icon_img/Gaze.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheck1">gaze</label>
                                     </div>
 
@@ -142,7 +154,7 @@
                                     <input class="form-check-input" type="checkbox" id="defaultcheck4" checked
                                         onchange="handleDisplay('defaultcheck4','defaultchart4')">
                                     <div class="selection_text_and_icon">
-                                        <img src="info_img/emotion.png" class="content_icon">
+                                        <img src="icon_img/Emotion.png" class="content_icon">
                                         <label class="form-check-label" for="defaultcheck4">emotion</label>
                                     </div>
                                 </div>
@@ -186,7 +198,7 @@
             <li>
                 <!-- default 3 concentration-->
                 <div class="card" id="defaultchart3"
-                    style="width: 18rem; height: 10rem; border-color: #90e0ef; border-width: 3px;margin:5px 0px 5px 0px; padding: 2px; cursor:pointer"
+                    style="width: 18rem; height: 10rem; border-color: #90e0ef; border-width: 3px;margin:5px 0px 5px 0px; padding: 1px; cursor:pointer"
                     onclick="handleDefaultChart3()">
                 </div>
             </li>
@@ -194,7 +206,7 @@
             <li>
                 <!-- default 2 confused-->
                 <div class="card" id="defaultchart2"
-                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #00b4d8; border-width: 3px;padding: 2px; cursor:pointer"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #00b4d8; border-width: 3px;padding: 1px; cursor:pointer"
                     onclick="handleDefaultChart2()">
 
                 </div>
@@ -208,7 +220,7 @@
                     <label class="form-check-label" for="defaultcheck1">gaze</label>
                 </div> -->
                 <div class="card" id="defaultchart1"
-                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #0077b6; border-width: 3px;padding: 2px; cursor:pointer"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #0077b6; border-width: 3px;padding: 1px; cursor:pointer"
                     onclick="handleDefaultChart1()">
                 </div>
             </li>
@@ -217,7 +229,7 @@
                 <!-- default 4 emotional-->
                 <!-- <div clas -->
                 <div class="card" id="defaultchart4"
-                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #03045e; border-width: 3px;padding: 2px; cursor:pointer;"
+                    style="width: 18rem; height: 10rem; margin:5px 0px 5px 0px; border-color: #03045e; border-width: 3px;padding: 1px; cursor:pointer;"
                     onclick="handleDefaultChart4()">
                 </div>
             </li>

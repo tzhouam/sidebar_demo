@@ -28,55 +28,54 @@ var radialInterval1,
   default4 = 0;
 
 const themes = {
-  theme_purple: {
-    defaultTrigger: "247, 209, 205",
-    defaultchart1: "179, 146, 172",
-    defaultchart2: "209, 179, 196",
-    defaultchart3: "232, 194, 202",
-    defaultchart4: "115, 93, 120",
-    // bar: "#f38375",
-    // radial: "#f7a399",
+  theme_orange: {
+    default: {
+      defaultTrigger: "254,240,217",
+      defaultchart1: "227,74,51",
+      defaultchart2: "252,141,89",
+      defaultchart3: "253,204,138",
+      defaultchart4: "179,0,0",
+    },
     motor: [
-      [0.1, "#e0b1cb"],
-      [0.5, "#9f86c0"],
-      [0.9, "#231942"],
+      [0.1, "#fee8c8"],
+      [0.5, "#fdbb84"],
+      [0.9, "#e34a33"],
     ],
   },
   theme_blue: {
-    defaultTrigger: "173, 232, 244",
-    defaultchart1: "56, 111, 164",
-    defaultchart2: "89, 165, 216",
-    defaultchart3: "144, 224, 239",
-    defaultchart4: "19, 60, 85",
-    // bar: "#f38375",
-    // radial: "#f7a399",
+    default: {
+      defaultTrigger: "239,243,255",
+      defaultchart1: "49,130,189",
+      defaultchart2: "107,174,214",
+      defaultchart3: "189,215,231",
+      defaultchart4: "8,81,156",
+    },
     motor: [
-      [0.1, "#caf0f8"],
-      [0.5, "#59A5D8"],
-      [0.9, "#133C55"],
+      [0.1, "#deebf7"],
+      [0.5, "#9ecae1"],
+      [0.9, "#3182bd"],
     ],
   },
-  theme_orange: {
-    defaultTrigger: "247, 178, 103",
-    defaultchart1: "242, 112, 89",
-    defaultchart2: "244, 132, 95",
-    defaultchart3: "247, 157, 101",
-    defaultchart4: "242, 92, 84",
-    // bar: "#f38375",
-    // radial: "#f7a399",
+  theme_green: {
+    default: {
+      defaultTrigger: "237,248,233",
+      defaultchart1: "49,163,84",
+      defaultchart2: "116,196,118",
+      defaultchart3: "186,228,179",
+      defaultchart4: "0,109,44",
+    },
+
     motor: [
-      [0.1, "#f7b267"],
-      [0.5, "#f4845f"],
-      [0.9, "#a4243b"],
+      [0.1, "#e5f5e0"],
+      [0.5, "#a1d99b"],
+      [0.9, "#31a354"],
     ],
   },
 };
 
 function loadDefaultWindow() {
   // get the chart type
-  console.log(document.cookie);
   var cookieList = document.cookie.split("; ");
-
   console.log("cookie list:", cookieList);
 
   var gazeChartType,
@@ -122,7 +121,7 @@ function loadDefaultWindow() {
   console.log("theme:", theme);
 
   // set theme
-  for (const [key, value] of Object.entries(theme)) {
+  for (const [key, value] of Object.entries(theme.default)) {
     console.log(`${key}: ${value}`);
     $(`#${key}`).css("border-color", `rgb(${value})`);
     $(`#${key}Check`).css("background-color", `rgba(${value},0.5)`);
@@ -180,19 +179,19 @@ function loadDefaultWindow() {
     $("#defaultchart2").css("height", 90);
   }
 
-  // draw default 3 concentration
+  // draw default 3 Engagement
   if (barInterval3) clearInterval(barInterval3);
   if (radialInterval3) clearInterval(radialInterval3);
   if (motorInterval3) clearInterval(motorInterval3);
 
   if (concenChartType == "Motor") {
-    drawMotorChart("defaultchart3", "Concentration", theme);
+    drawMotorChart("defaultchart3", "Engagement", theme);
     $("#defaultchart3").css("height", 120);
   } else if (concenChartType == "Radial") {
-    drawRadialChart("defaultchart3", "Concentration", theme);
+    drawRadialChart("defaultchart3", "Engagement", theme);
     $("#defaultchart3").css("height", 140);
   } else {
-    drawBarChart("defaultchart3", "Concentration", theme);
+    drawBarChart("defaultchart3", "Engagement", theme);
     $("#defaultchart3").css("height", 90);
   }
 
@@ -283,8 +282,9 @@ function loadDefaultWindow() {
 }
 
 function drawRadialChart(container, name, theme) {
+  var image;
   var RadialChart = Highcharts.chart(container, {
-    colors: [`rgb(${theme[container]})`],
+    colors: [`rgb(${theme.default[container]})`],
     credits: false,
     chart: {
       type: "column",
@@ -297,16 +297,28 @@ function drawRadialChart(container, name, theme) {
       // borderWidth: 2,
       // plotBackgroundImage: "info_img/engage.png",
 
-      // events: {
-      //   load: function () {
-      //     var series = this.series[0];
-      //     setInterval(function () {
-      //       data = [];
-      //       data.push(Math.random() * 150);
-      //       series.setData(data);
-      //     }, 2000);
-      //   },
-      // },
+      events: {
+        // load: function () {
+        //   var series = this.series[0];
+        //   setInterval(function () {
+        //     data = [];
+        //     data.push(Math.random() * 150);
+        //     series.setData(data);
+        //   }, 2000);
+        // },
+        redraw: function () {
+          // console.log("redraw", this.chartHeight);
+          if (image) image.destroy();
+          image = this.renderer.image(
+            `icon_img/${name}.png`,
+            this.chartWidth / 2 - 10,
+            this.chartHeight / 2 - 18,
+            22,
+            22
+          );
+          image.add();
+        },
+      },
     },
     exporting: {
       enabled: false,
@@ -363,6 +375,10 @@ function drawRadialChart(container, name, theme) {
       labelFormatter: function () {
         return Math.round((this.yData / 150) * 100) + "%";
       },
+      // hide the dot
+      symbolHeight: 0.001,
+      symbolWidth: 0.001,
+      symbolRadius: 0.001,
     },
     series: [
       {
@@ -372,7 +388,15 @@ function drawRadialChart(container, name, theme) {
     ],
   });
 
-  RadialChart.renderer.image("info_img/confuse.png", 36, 53, 22, 22).add();
+  image = RadialChart.renderer
+    .image(
+      `icon_img/${name}.png`,
+      RadialChart.chartWidth / 2 - 10,
+      RadialChart.chartHeight / 2 - 18,
+      22,
+      22
+    )
+    .add();
 
   var radialInterval = setInterval(function () {
     if (RadialChart) {
@@ -387,12 +411,27 @@ function drawRadialChart(container, name, theme) {
 }
 
 function drawMotorChart(container, name, theme) {
-  console.log(theme);
+  var image;
+  // console.log(theme);
   var gaugeOptions = {
     chart: {
       type: "solidgauge",
       margin: [30, 0, 0, 0],
       height: 118,
+      events: {
+        redraw: function () {
+          // console.log("redraw", this.chartWidth);
+          if (image) image.destroy();
+          image = this.renderer.image(
+            `icon_img/${name}.png`,
+            this.chartWidth / 2 - 10,
+            this.chartHeight / 2 - 6,
+            22,
+            22
+          );
+          image.add();
+        },
+      },
     },
 
     title: {
@@ -492,6 +531,16 @@ function drawMotorChart(container, name, theme) {
     })
   );
 
+  image = MotorChart.renderer
+    .image(
+      `icon_img/${name}.png`,
+      MotorChart.chartWidth / 2 - 10,
+      MotorChart.chartHeight / 2 - 6,
+      22,
+      22
+    )
+    .add();
+
   var motorInterval = setInterval(function () {
     var point, newVal, inc;
 
@@ -512,12 +561,27 @@ function drawMotorChart(container, name, theme) {
 }
 
 function drawBarChart(container, name, theme, barInterval) {
+  var image;
   var BarChart = Highcharts.chart(container, {
-    colors: [`rgb(${theme[container]})`],
+    colors: [`rgb(${theme.default[container]})`],
     chart: {
       type: "bar",
       margin: [20, 0, 40, 0],
       height: 100,
+      events: {
+        redraw: function () {
+          // console.log("redraw", this.chartHeight);
+          if (image) image.destroy();
+          image = this.renderer.image(
+            `icon_img/${name}.png`,
+            this.chartWidth / 2 - 35,
+            this.chartHeight / 2 + 10,
+            22,
+            22
+          );
+          image.add();
+        },
+      },
     },
     exporting: {
       enabled: false,
@@ -558,6 +622,10 @@ function drawBarChart(container, name, theme, barInterval) {
       labelFormatter: function () {
         return Math.round((this.yData / 150) * 100) + "%";
       },
+      // hide the dot
+      symbolHeight: 0.001,
+      symbolWidth: 0.001,
+      symbolRadius: 0.001,
     },
     series: [
       {
@@ -566,6 +634,16 @@ function drawBarChart(container, name, theme, barInterval) {
       },
     ],
   });
+
+  image = BarChart.renderer
+    .image(
+      `icon_img/${name}.png`,
+      BarChart.chartWidth / 2 - 35,
+      BarChart.chartHeight / 2 + 10,
+      22,
+      22
+    )
+    .add();
 
   var barInterval = setInterval(function () {
     if (BarChart) {
@@ -660,15 +738,15 @@ function handleDefaultChart3() {
   if (motorInterval3) clearInterval(motorInterval3);
 
   if (default3 == 0) {
-    drawMotorChart("defaultchart3", "concentration", theme);
+    drawMotorChart("defaultchart3", "Engagement", theme);
     document.cookie = "concencharttype=Motor";
     $("#defaultchart3").css("height", 120);
   } else if (default3 == 1) {
-    drawRadialChart("defaultchart3", "concentration", theme);
+    drawRadialChart("defaultchart3", "Engagement", theme);
     document.cookie = "concencharttype=Radial";
     $("#defaultchart3").css("height", 140);
   } else {
-    drawBarChart("defaultchart3", "concentration", theme);
+    drawBarChart("defaultchart3", "Engagement", theme);
     document.cookie = "concencharttype=Bar";
     $("#defaultchart3").css("height", 90);
   }
