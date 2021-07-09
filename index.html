@@ -8,36 +8,84 @@
     <title>Sidebar Demo</title>
     <script src="main.js"></script>
     <script src="default.js"></script>
-
+    <script src="handle_emotion.js"></script>
     <script src="jquery/jquery-3.5.1.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ztc_added.css">
 </head>
 
 <body onresize="handleWindowResize()" onload="loadWindow()">
     <div class="container-fluid m-20">
         <h5>Demo</h5>
-        <!-- <div class="row"> -->
-        <button type="button" class="btn btn-primary" onclick="ToDefaultView()">default view</button>
-        <button type="button" class="btn btn-primary" onclick="ToFullView()">full view</button>
-        <!-- </div> -->
+
+        <!-- to default -->
+        <button type="button" class="btn btn-primary" onclick="ToDefaultView()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-layout-sidebar-reverse" viewBox="0 0 16 16">
+                <path
+                    d="M16 3a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3zm-5-1v12H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h9zm1 0h2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-2V2z" />
+            </svg>
+            Default view
+        </button>
+
+        <!-- full size -->
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" onclick="ToFullView()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-fullscreen" viewBox="0 0 16 16">
+                    <path
+                        d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z" />
+                </svg>
+                Full view</button>
+            <button id="fullsize" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="fullsize">
+                <li><a class="dropdown-item" onclick="ToFullView('0.25')"><img src="full_size_img/0.25_icon.png"
+                            class="full_window_size">
+                        25%</a></li>
+                <li><a class="dropdown-item" onclick="ToFullView('0.5')"><img src="full_size_img/0.5_icon.png"
+                            class="full_window_size">
+                        50%</a></li>
+                <li>
+                    <a class="dropdown-item" onclick="ToFullView('1')"><img src="full_size_img/1.0_icon.png"
+                            class="full_window_size">
+                        100%</a>
+                </li>
+            </ul>
+        </div>
+
 
         <br />
         <br />
 
         <h5>Customize:</h5>
 
+        <!-- chart img -->
         <div class="row">
             <div class="col-2">
             </div>
-            <div class="col-6">
+            <div class="col-2" style="text-align: center">
                 <img width=100 src="chart_img/radial.png" />
+            </div>
+            <div class="col-2" style="text-align: center">
                 <img width=100 class="m-2" src="chart_img/motor.png" />
+            </div>
+            <div class="col-2" style="text-align: center">
                 <img width=100 class="m-2" src="chart_img/bar.png" />
             </div>
         </div>
@@ -46,7 +94,7 @@
             <div class="col-2">
                 <p style="font-size: large;">Concentration:</p>
             </div>
-            <div class="btn-group col-4" role="group" aria-label="Basic radio toggle button group"
+            <div class="btn-group col-6" role="group" aria-label="Basic radio toggle button group"
                 onchange="handleRadioChange()">
                 <input type="radio" class="btn-check" name="concenradio" id="concenradio1" value="Radial"
                     autocomplete="off" checked>
@@ -66,7 +114,7 @@
             <div class="col-2">
                 <p style="font-size: large;">Confused:</p>
             </div>
-            <div class="btn-group col-4" role="group" aria-label="Basic radio toggle button group"
+            <div class="btn-group col-6" role="group" aria-label="Basic radio toggle button group"
                 onchange="handleRadioChange()">
                 <input type="radio" class="btn-check" name="confusedradio" id="confusedradio1" value="Radial"
                     autocomplete="off" checked>
@@ -86,7 +134,7 @@
             <div class="col-2">
                 <p style="font-size: large;">Gaze:</p>
             </div>
-            <div class="btn-group col-4" role="group" aria-label="Basic radio toggle button group"
+            <div class="btn-group col-6" role="group" aria-label="Basic radio toggle button group"
                 onchange="handleRadioChange()">
                 <input type="radio" class="btn-check" name="gazeradio" id="gazeradio1" value="Radial" autocomplete="off"
                     checked>
@@ -104,7 +152,7 @@
             <div class="col-2">
                 <p style="font-size: large;">Emotion:</p>
             </div>
-            <div class="btn-group col-4" role="group" aria-label="Basic radio toggle button group"
+            <div class="btn-group col-6" role="group" aria-label="Basic radio toggle button group"
                 onchange="handleRadioChange()">
                 <input type="radio" class="btn-check" name="emoradio" id="emoradio1" value="Radial" autocomplete="off"
                     checked>
@@ -115,10 +163,36 @@
 
                 <input type="radio" class="btn-check" name="emoradio" id="emoradio3" value="Bar" autocomplete="off">
                 <label class="btn btn-outline-primary" for="emoradio3">Bar</label>
+                <!-- <input type="radio" class="btn-check" name="emoradio" id="emoradio4" value="emotionwheel" autocomplete="off">
+                <label class="btn btn-outline-primary" for="emoradio4">emotionwheel</label> -->
             </div>
         </div>
+        <br />
 
+        <!-- theme -->
+        <div class='row m-2'>
+            <div class="col-2">
+                <p style="font-size: large;">Theme:</p>
+            </div>
 
+            <div class="btn-group col-6" role="group" aria-label="Basic radio toggle button group"
+                onchange="handleThemeChange()">
+                <input type="radio" class="btn-check" name="themeradio" id="themeradio1" value="theme_purple"
+                    autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="themeradio1"><img width=100
+                        src="theme_img/theme_purple.png" /></label>
+
+                <input type="radio" class="btn-check" name="themeradio" id="themeradio2" value="theme_blue"
+                    autocomplete="off">
+                <label class="btn btn-outline-primary" for="themeradio2"><img width=100
+                        src="theme_img/theme_blue.png" /></label>
+
+                <input type="radio" class="btn-check" name="themeradio" id="themeradio3" value="theme_orange"
+                    autocomplete="off">
+                <label class="btn btn-outline-primary" for="themeradio3"><img width=100
+                        src="theme_img/theme_orange.png" /></label>
+            </div>
+        </div>
 
     </div>
 

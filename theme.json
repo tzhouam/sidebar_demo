@@ -1,0 +1,29 @@
+{
+  "theme": [
+    {
+      "defaultTrigger": "247, 209, 205",
+      "defaultchart1": "179, 146, 172",
+      "defaultchart2": "209, 179, 196",
+      "defaultchart3": "232, 194, 202",
+      "defaultchart4": "115, 93, 120",
+      "motor": [
+        [0.1, "#e0b1cb"],
+        [0.5, "#9f86c0"],
+        [0.9, "#231942"]
+      ]
+    },
+
+    {
+      "defaultTrigger": "247, 209, 205",
+      "defaultchart1": "179, 146, 172",
+      "defaultchart2": "209, 179, 196",
+      "defaultchart3": "232, 194, 202",
+      "defaultchart4": "115, 93, 120",
+      "motor": [
+        [0.1, "#e0b1cb"],
+        [0.5, "#9f86c0"],
+        [0.9, "#231942"]
+      ]
+    }
+  ]
+}

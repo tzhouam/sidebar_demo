@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Demo</title>
+    <script src="main.js"></script>
+    <script src="default.js"></script>
+    <script src="handle_emotion.js"></script>
+    <script src="jquery/jquery-3.5.1.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ztc_added.css">
+</head>
+<body>
+    <script>
+        // var student_datas=[],
+        //     engagements=[],
+        //     emotion_x=[],
+        //     emotion_y=[],
+        //     confusions=[],
+        //     headshakes=[],
+        //     headnodes=[],
+        //     gazes=[],
+        //     drowsinesses=[],
+        //     smiles=[],
+        //     speakings=[];
+        // try{
+            // var xmlhttp;
+            // if (window.XMLHttpRequest)
+            // {// code for IE7+, Firefox, Chrome, Opera, Safari
+            // xmlhttp=new XMLHttpRequest();
+            // }
+            // else
+            // {// code for IE6, IE5
+            // xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            // }
+            // xmlhttp.onreadystatechange=function()
+            // {
+            // if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            //     {
+            //     document.getElementById("div").innerHTML=xmlhttp.responseText;
+
+            // }
+            // }
+            // xmlhttp.open("GET","http://49.232.60.34:5000/get_class_information",true);
+            // xmlhttp.send(); 
+            //setInterval(function(){
+    setInterval(function(){
+    $.get("http://49.232.60.34:5000/get_class_information",function(data,status){
+        if(status=="success"){
+            emotion_x=[];emotion_y=[];
+          student_datas=eval(data);
+          for(var student_number=0;student_number<student_datas.length;student_number++){        
+            var emotion=student_datas[student_number].emotion;
+            var meet_space=false;
+            var local_emotion_x="",local_emotion_y="";
+            for(var emotion_string_index=0;emotion_string_index<emotion.length;emotion_string_index++){
+                if(emotion[emotion_string_index]===" "){
+                    meet_space=true;
+                    continue;
+                }
+                if(meet_space){
+                    local_emotion_y+=emotion[emotion_string_index];
+                }
+                else{
+                    local_emotion_x+=emotion[emotion_string_index];
+                }
+            }
+            emotion_x[student_number]=local_emotion_x-0 ;
+            emotion_y[student_number]=local_emotion_y-0;
+
+            engagements[student_number] = student_datas[student_number].engagement-0;
+            confusions[student_number] = student_datas[student_number].confusion-0;
+            confusions[student_number]=confusions[student_number]-0;
+            headshakes[student_number] = student_datas[student_number].headshake-0;
+            headnodes[student_number] = student_datas[student_number].headnod-0;
+            gazes[student_number] = student_datas[student_number].gaze-0;
+            drowsinesses[student_number] = student_datas[student_number].drowsiness-0;
+            smiles[student_number] = student_datas[student_number].smile-0;
+            speakings[student_number] = student_datas[student_number].speaking-0;
+            // var form=document.createElement("ul");
+            // var 
+            document.getElementById("1").innerHTML=engagements[0];
+            try{
+            var rs=document.createElement("img");
+            document.getElementById("2").insertBefore(rs,document.getElementById("2").lastElementChild);
+            rs.width="100px";
+            rs.height="100px";
+            rs.style.backgroundColor="black";
+            rs.src="emotionwheel_background/emotionwheel.png";}catch(e){alert(e.message)}
+            // document.getElementById("3")
+            // document.getElementById("4")
+
+           
+            //alert(typeof conut(gazes));
+            
+          }
+        }
+        else{
+          alert("Data is not successfully got from server with status: "+status);
+        }
+      });
+    },1000);
+    //},1000);
+
+        // }catch(e){
+        //     alert(e.message);
+        // }
+function tostring(params) {
+    for(var i=0;i<params.length;i++){
+        
+    }
+}
+function add(a,b) {
+    a++;
+    b++;
+    document.write(a+"    "+b+"\n");
+}
+function count(data) {
+  var num=0;
+  for(var i=0;i<data.length;i++){
+    if(data[i]===1){num=num+1;}
+    
+  }
+  return num;
+}
+
+    </script>
+    <div id="test">
+        <ul>
+            <li id="1"></li>
+            <li id="2"></li>
+            <li id="3"></li>
+            <li id="4"></li>
+        </ul>
+    </div>
+</body>
