@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="handle_emotion.js"></script>
+</head>
+<body>
+    <p id="data_test" style="font-size: xx-small;display: none"></p>
+    <img src="emotionwheel_background/emotionwheel.png" style="display: none;" id="emotion_wheel_img">
+    <canvas width="90px" height="90px"  id="emotion_wheel"
+        style="background-image: url('emotionwheel_background/emotionwheel_background.png');background-size:90px 90px;
+        background-repeat: no-repeat;margin: auto;
+        display: flex;align-items: center;justify-content: center"
+    >
+        Your explorer doesn't support canvas, please upload your explorer.
+    </canvas>
+    <div id="test"></div>
+    <script>
+        
+        var test=document.getElementById("test");
+        var canvas=document.getElementById("emotion_wheel");
+        var a=[];
+        var b=[];
+        for(var i=0;i<30;i++){
+            a[i]=Math.random()*2-1;
+            b[i]=Math.random()*2-1;
+        }
+        create_emotion_wheel(a,b);
+    </script>
+</body>
+</html>
